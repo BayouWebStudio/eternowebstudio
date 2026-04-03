@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Ruben Charre | Tattoo Artist San Luis Potosí</title>
+  <meta name="description" content="Ruben Charre is a tattoo artist from San Luis Potosí, Mexico with 15+ years of experience in neo-traditional, anime, and illustrative tattoo styles.">
+  <link rel="canonical" href="https://eternowebstudio.com/rubencharre/about.html">
+  <meta property="og:title" content="About Ruben Charre — Tattoo Artist">
+  <meta property="og:description" content="15+ years of ink, story, and intention from San Luis Potosí, Mexico.">
+  <meta property="og:image" content="https://eternowebstudio.com/rubencharre/images/ruben-hero.jpg">
+  <meta property="og:url" content="https://eternowebstudio.com/rubencharre/about.html">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0a0a0a; --charcoal: #1a1a1a; --gold: #C9A84C;
+      --white: #f5f5f0; --dim: #888; --border: rgba(255,255,255,0.07);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10,10,10,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; letter-spacing: 0.12em; color: var(--white); text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { color: var(--dim); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--white); margin: 5px 0; }
+    .mobile-menu { display: none; position: fixed; top: 65px; left: 0; right: 0; z-index: 99; background: var(--charcoal); padding: 24px 48px; border-bottom: 1px solid var(--border); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; color: var(--white); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .book-float { position: fixed; bottom: 32px; right: 32px; z-index: 200; background: var(--gold); color: #000; font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; padding: 14px 22px; border-radius: 2px; box-shadow: 0 4px 24px rgba(201,168,76,0.3); transition: transform 0.2s, box-shadow 0.2s; }
+    .book-float:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.45); }
+    .page-hero {
+      padding: 160px 72px 80px;
+      background: var(--charcoal);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-eyebrow { font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 6vw, 5rem); font-weight: 300; line-height: 1; }
+    .about-body { padding: 96px 72px; max-width: 1200px; margin: 0 auto; }
+    .about-layout { display: grid; grid-template-columns: 1fr 420px; gap: 80px; align-items: start; }
+    .sticky-photo { position: sticky; top: 100px; }
+    .sticky-photo img { width: 100%; aspect-ratio: 3/4; object-fit: cover; filter: brightness(0.85); }
+    .bio-text h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; margin-bottom: 28px; line-height: 1.2; }
+    .bio-text p { color: var(--dim); line-height: 1.9; margin-bottom: 24px; font-size: 0.95rem; }
+    .bio-text p strong { color: var(--white); font-weight: 400; }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 48px 0; padding: 40px; background: var(--charcoal); border: 1px solid var(--border); }
+    .stat-item .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; color: var(--gold); }
+    .stat-item .stat-label { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+    .specialties { margin-top: 48px; }
+    .specialties h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; margin-bottom: 20px; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag { border: 1px solid var(--border); color: var(--dim); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 16px; }
+    footer { background: var(--charcoal); padding: 48px 72px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--dim); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--dim); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { color: var(--dim); font-size: 0.72rem; }
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; } .nav-links { display: none; } .hamburger { display: block; }
+      .page-hero { padding: 120px 24px 60px; }
+      .about-body { padding: 60px 24px; }
+      .about-layout { grid-template-columns: 1fr; gap: 48px; }
+      .sticky-photo { position: static; }
+      footer { flex-direction: column; gap: 24px; text-align: center; padding: 40px 24px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+      .book-float { bottom: 20px; right: 20px; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/rubencharre/" class="nav-logo">RUBEN CHARRE</a>
+  <ul class="nav-links">
+    <li><a href="/rubencharre/">Home</a></li>
+    <li><a href="/rubencharre/about.html" class="active">About</a></li>
+    <li><a href="/rubencharre/tattoos.html">Tattoos</a></li>
+    <li><a href="/rubencharre/booking.html">Booking</a></li>
+    <li><a href="/rubencharre/testimonials.html">Testimonials</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="/rubencharre/">Home</a>
+  <a href="/rubencharre/about.html">About</a>
+  <a href="/rubencharre/tattoos.html">Tattoos</a>
+  <a href="/rubencharre/booking.html">Booking</a>
+  <a href="/rubencharre/testimonials.html">Testimonials</a>
+</div>
+
+<div class="page-hero">
+  <p class="page-eyebrow fade-up">The Artist</p>
+  <h1 class="fade-up">About<br>Ruben Charre</h1>
+</div>
+
+<div class="about-body">
+  <div class="about-layout">
+    <div class="bio-text">
+      <h2 class="fade-up">Tattoos That Tell Your Story</h2>
+      <p class="fade-up">I'm Ruben Charre — a tattoo artist from <strong>San Luis Potosí, Mexico</strong> with over 15 years in the craft. My style is rooted in neo-traditional illustration: bold linework, rich color, and the kind of detail that holds up for decades. But more than technique, what drives me is the story behind the piece. Anime characters that defined a generation. Portraits that carry grief and love in the same breath. Mythological imagery that speaks to who someone actually is.</p>
+      <p class="fade-up">I work out of <strong>Black Soul Tattoo SLP</strong>, where I've built a space that feels less like a studio and more like a creative home. I take on long-format projects — sleeves, back pieces, multi-session builds — as well as single-sitting work when the concept calls for it. If you're looking for someone to rush you through a flash sheet, I'm probably not your guy. But if you want to sit down, talk through something real, and walk out with something that actually means something? That's exactly what I'm here for.</p>
+      <p class="fade-up">Over the years I've had the honor of tattooing at the <strong>Mondial du Tatouage in Paris</strong>, traveling to conventions across Mexico and internationally, and connecting with artists and clients from all over the world. That exposure sharpens the work — every convention is a masterclass in seeing how other artists solve the same problems I do. But home is always San Luis Potosí. That's where the roots are.</p>
+
+      <div class="stats-grid fade-up">
+        <div class="stat-item">
+          <div class="stat-num">15+</div>
+          <div class="stat-label">Years Tattooing</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">SLP</div>
+          <div class="stat-label">Based In</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">🌍</div>
+          <div class="stat-label">International</div>
+        </div>
+      </div>
+
+      <div class="specialties fade-up">
+        <h3>Specialties</h3>
+        <div class="tag-list">
+          <span class="tag">Neo-Traditional</span>
+          <span class="tag">Anime & Pop Culture</span>
+          <span class="tag">Portraiture</span>
+          <span class="tag">Japanese Influenced</span>
+          <span class="tag">Mythology</span>
+          <span class="tag">Illustrative</span>
+          <span class="tag">Color Work</span>
+          <span class="tag">Black & Grey</span>
+          <span class="tag">Large Scale</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sticky-photo fade-up">
+      <img src="/rubencharre/images/g11.jpg" alt="Ruben Charre tattoo artwork">
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Ruben Charre</div>
+  <div class="footer-links">
+    <a href="/rubencharre/about.html">About</a>
+    <a href="/rubencharre/tattoos.html">Tattoos</a>
+    <a href="/rubencharre/booking.html">Booking</a>
+    <a href="/rubencharre/testimonials.html">Testimonials</a>
+    <a href="https://instagram.com/rubencharre" target="_blank" rel="noopener">Instagram</a>
+  </div>
+  <div class="footer-copy">© 2026 Ruben Charre</div>
+</footer>
+
+<a href="/rubencharre/booking.html" class="book-float">Book a Session</a>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

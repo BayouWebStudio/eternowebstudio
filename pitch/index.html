@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1024, initial-scale=1.0" />
+  <title>Eterno Web Studio — Pitch Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0A;
+      --gold: #C9A84C;
+      --gold-light: #E2C170;
+      --gold-dim: rgba(201,168,76,0.15);
+      --white: #FFFFFF;
+      --gray: rgba(255,255,255,0.55);
+      --gray-dim: rgba(255,255,255,0.08);
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── DECK CONTAINER ── */
+    #deck {
+      width: 100%; height: 100%;
+      position: relative;
+    }
+
+    /* ── SLIDES ── */
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 64px 80px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.55s ease;
+      overflow: hidden;
+    }
+    .slide.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* ── SUBTLE GRID TEXTURE ── */
+    .slide::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    /* ── LOGO DIAMOND ── */
+    .logo-diamond {
+      width: 28px; height: 28px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: absolute;
+      top: 36px;
+      left: 80px;
+    }
+    .logo-mark span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── SLIDE NUMBER ── */
+    .slide-num {
+      position: absolute;
+      bottom: 36px;
+      right: 80px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.2);
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+
+    /* ── GOLD RULE ── */
+    .rule {
+      width: 48px; height: 2px;
+      background: var(--gold);
+      margin: 20px auto 28px;
+    }
+    .rule.left { margin-left: 0; }
+
+    /* ── TYPOGRAPHY ── */
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 62px;
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.015em;
+    }
+    h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .tagline {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--gold-light);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+    .label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif;
+      margin-bottom: 16px;
+    }
+    p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--gray);
+      max-width: 640px;
+    }
+
+    /* ── BULLETS ── */
+    .bullets {
+      list-style: none;
+      margin-top: 8px;
+    }
+    .bullets li {
+      font-size: 18px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.88);
+      padding: 10px 0 10px 28px;
+      position: relative;
+      border-bottom: 1px solid var(--gray-dim);
+    }
+    .bullets li:first-child { border-top: 1px solid var(--gray-dim); }
+    .bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      width: 8px; height: 8px;
+      background: var(--gold);
+    }
+    .bullets li strong { color: var(--white); font-weight: 600; }
+
+    /* ── TWO-COL LAYOUT ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      width: 100%;
+      max-width: 900px;
+      align-items: start;
+    }
+
+    /* ── PRICING CARDS ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+      max-width: 900px;
+    }
+    .price-card {
+      background: var(--gray-dim);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 4px;
+      padding: 32px 28px;
+      position: relative;
+    }
+    .price-card.featured {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.07);
+    }
+    .price-card .plan-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .price-card .amount {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .price-card .amount span {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--gray);
+    }
+    .price-card ul {
+      list-style: none;
+      margin-top: 20px;
+    }
+    .price-card ul li {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      padding: 5px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+    .price-card ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+    .badge {
+      position: absolute;
+      top: -1px; right: 20px;
+      background: var(--gold);
+      color: var(--bg);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+
+    /* ── STAT BLOCKS ── */
+    .stats-row {
+      display: flex;
+      gap: 48px;
+      margin-top: 16px;
+    }
+    .stat-block { text-align: center; }
+    .stat-block .num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-block .desc {
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 6px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── ADDON GRID ── */
+    .addon-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      width: 100%;
+      max-width: 860px;
+    }
+    .addon-item {
+      background: var(--gray-dim);
+      border: 1px solid rgba(201,168,76,0.14);
+      border-radius: 4px;
+      padding: 22px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .addon-name {
+      font-size: 15px;
+      color: var(--white);
+      font-weight: 500;
+    }
+    .addon-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+    .addon-sub {
+      font-size: 11px;
+      color: var(--gray);
+      margin-top: 3px;
+    }
+
+    /* ── COVER SPECIFIC ── */
+    #slide-1 { text-align: center; }
+    #slide-1 .diamond-large {
+      width: 56px; height: 56px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      margin: 0 auto 48px;
+    }
+    #slide-1 h1 {
+      font-size: 70px;
+      max-width: 820px;
+    }
+    #slide-1 .tagline {
+      margin-top: 24px;
+    }
+
+    /* ── MARKET TAGS ── */
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      max-width: 560px;
+    }
+    .tag {
+      border: 1px solid rgba(201,168,76,0.35);
+      padding: 8px 18px;
+      font-size: 14px;
+      border-radius: 2px;
+      color: rgba(255,255,255,0.8);
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.06em;
+    }
+    .tag.highlight {
+      background: var(--gold-dim);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    /* ── CTA SLIDE ── */
+    #slide-10 { text-align: center; }
+    #slide-10 h2 { font-size: 52px; max-width: 700px; }
+    .cta-box {
+      margin-top: 40px;
+      border: 1px solid var(--gold);
+      padding: 32px 56px;
+      max-width: 520px;
+      text-align: center;
+    }
+    .cta-box .cta-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .cta-box .cta-title {
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: 4px;
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+    .cta-box .cta-contact {
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      margin-top: 20px;
+      line-height: 1.7;
+    }
+    .cta-cta {
+      display: inline-block;
+      margin-top: 32px;
+      background: var(--gold);
+      color: var(--bg);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+    }
+
+    /* ── DIFF ROW ── */
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      width: 100%;
+      max-width: 860px;
+      margin-top: 4px;
+    }
+    .diff-item {
+      background: var(--gray-dim);
+      border-left: 2px solid var(--gold);
+      padding: 20px 24px;
+    }
+    .diff-item .diff-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .diff-item .diff-body {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.55;
+    }
+
+    /* ── PROBLEM PAIN ── */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      width: 100%;
+      max-width: 860px;
+      margin-top: 8px;
+    }
+    .pain-card {
+      background: var(--gray-dim);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 28px 24px;
+      border-radius: 2px;
+    }
+    .pain-card .pain-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .pain-card .pain-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .pain-card .pain-body {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ── SOLUTION STEPS ── */
+    .steps {
+      display: flex;
+      gap: 0;
+      width: 100%;
+      max-width: 900px;
+      margin-top: 8px;
+    }
+    .step {
+      flex: 1;
+      padding: 32px 28px;
+      border-top: 2px solid var(--gray-dim);
+      position: relative;
+    }
+    .step.active-step { border-top-color: var(--gold); }
+    .step-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .step-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .step-body {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ── DEMO MOCKUP ── */
+    .demo-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      width: 100%;
+      max-width: 900px;
+      align-items: center;
+    }
+    .mockup-screen {
+      background: #111;
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      display: flex;
+      flex-direction: column;
+    }
+    .mockup-bar {
+      background: #1a1a1a;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 6px;
+    }
+    .mockup-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+    }
+    .mockup-dot:first-child { background: #FF5F57; }
+    .mockup-dot:nth-child(2) { background: #FFBD2E; }
+    .mockup-dot:nth-child(3) { background: #28CA41; }
+    .mockup-body {
+      flex: 1;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .mockup-hero {
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,168,76,0.2);
+      height: 40%;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mockup-hero span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .mockup-lines { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .mockup-line {
+      background: rgba(255,255,255,0.06);
+      height: 8px;
+      border-radius: 2px;
+    }
+    .mockup-line.short { width: 60%; }
+
+    /* ── TRACTION TIMELINE ── */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+      max-width: 600px;
+    }
+    .tl-item {
+      display: flex;
+      gap: 24px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--gray-dim);
+      align-items: flex-start;
+    }
+    .tl-dot {
+      width: 12px; height: 12px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .tl-content .tl-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .tl-content .tl-sub {
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 3px;
+    }
+    .tl-year {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      min-width: 60px;
+      padding-top: 2px;
+    }
+
+  </style>
+</head>
+<body>
+
+<div id="deck">
+
+  <!-- ══════════════════════════════════
+       SLIDE 1 — PORTADA
+  ══════════════════════════════════ -->
+  <section class="slide active" id="slide-1">
+    <div class="logo-mark">
+      <div class="logo-diamond"></div>
+      <span>Eterno Web Studio</span>
+    </div>
+
+    <div class="diamond-large"></div>
+
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:#C9A84C;margin-bottom:12px;">Eterno Web Studio</div>
+    <h1>Tu Legado,<br/>Hecho Eterno.</h1>
+    <div class="rule"></div>
+    <p class="tagline">Sitios web premium para negocios creativos — en 48 horas</p>
+
+    <div class="slide-num">01 / 10</div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SLIDE 2 — EL PROBLEMA
+  ══════════════════════════════════ -->
+  <section class="slide" id="slide-2">
+    <div class="logo-mark">
+      <div class="logo-diamond"></div>
+      <span>Eterno Web Studio</span>
+    </div>
+
+    <div style="width:100%;max-width:900px;">
+      <div class="label">El Problema</div>
+      <h2>Tu talento merece<br/>más que Instagram.</h2>
+      <div class="rule left"></div>
+
+      <!-- Stats Row: Hard Data -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(201,168,76,0.2);background:rgba(201,168,76,0.04);margin-bottom:20px;">
+        <div style="padding:18px 22px;border-right:1px solid rgba(201,168,76,0.15);text-align:center;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:50px;font-weight:800;color:var(--gold);line-height:1;">97%</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:6px;line-height:1.45;">de consumidores buscan negocios en internet antes de visitarlos</div>
+        </div>
+        <div style="padding:18px 22px;border-right:1px solid rgba(201,168,76,0.15);text-align:center;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:50px;font-weight:800;color:var(--gold);line-height:1;">8/10</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:6px;line-height:1.45;">clientes no te encuentran si no estás en Google</div>
+        </div>
+        <div style="padding:18px 22px;text-align:center;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:50px;font-weight:800;color:var(--gold);line-height:1;">46%</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:6px;line-height:1.45;">de búsquedas en Google son locales — "cerca de mí"</div>
+        </div>
+      </div>
+
+      <div class="pain-grid">
+        <div class="pain-card" style="padding:20px 22px;">
+          <div class="pain-icon">📱</div>
+          <div class="pain-title">Dependen 100% de Instagram</div>
+          <div class="pain-body">Si el algoritmo cambia o la cuenta se cae, pierden todos sus clientes de golpe.</div>
+        </div>
+        <div class="pain-card" style="padding:20px 22px;">
+          <div class="pain-icon">🔍</div>
+          <div class="pain-title">No aparecen en Google</div>
+          <div class="pain-body">Clientes nuevos buscan "tatuador CDMX" o "barbero cerca" — y ellos no están ahí.</div>
+        </div>
+        <div class="pain-card" style="padding:20px 22px;">
+          <div class="pain-icon">🏗️</div>
+          <div class="pain-title">Sin tiempo ni conocimientos</div>
+          <div class="pain-body">Crear un sitio web toma semanas, cuesta miles, y nadie les enseña cómo hacerlo.</div>
+        </div>
+        <div class="pain-card" style="padding:20px 22px;">
+          <div class="pain-icon">💸</div>
+          <div class="pain-title">Agencias cobran demasiado</div>
+          <div class="pain-body">$15,000–$40,000 MXN por un sitio que queda desactualizado al mes siguiente.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-num">02 / 10</div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SLIDE 3 — LA SOLUCIÓN
+  ══════════════════════════════════ -->
+  <section class="slide" id="slide-3">
+    <div class="logo-mark">
+      <div class="logo-diamond"></div>
+      <span>Eterno Web Studio</span>
+    </div>
+
+    <div style="width:100%;max-width:900px;">
+      <div class="label">La Solución</div>
+      <h2>De Instagram a sitio web<br/><span style="color:var(--gold)">en 48 horas.</span></h2>
+      <div class="rule left"></div>
+
+      <!-- Value Split: GBP vs Sitio Web -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:4px;">
+
+        <!-- Sección 1: Google Maps -->
+        <div style="border:1px solid rgba(201,168,76,0.3);background:rgba(201,168,76,0.05);padding:28px 26px;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">📍 Aparece en Google Maps</div>
+          <div style="display:flex;flex-direction:column;gap:0;">
+            <div style="display:flex;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:800;color:var(--gold);line-height:1;flex-shrink:0;">88%</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.45;">que busca un negocio local lo visita en 24 hrs</div>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:800;color:var(--gold);line-height:1;flex-shrink:0;">7x</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.45;">más clics con Google Business Profile completo</div>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:12px;padding:10px 0;">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:800;color:var(--gold);line-height:1;flex-shrink:0;">90%</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.45;">lee reseñas antes de visitar un negocio</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 2: Sitio Web -->
+        <div style="border:1px solid rgba(201,168,76,0.3);background:rgba(201,168,76,0.05);padding:28px 26px;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">🌐 Tu Sitio Web Cierra la Venta</div>
+          <div style="display:flex;flex-direction:column;gap:0;">
+            <div style="display:flex;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:800;color:var(--gold);line-height:1;flex-shrink:0;">75%</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.45;">juzga tu credibilidad por tu sitio web</div>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:800;color:var(--gold);line-height:1;flex-shrink:0;">56%</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.45;">no confía en un negocio sin sitio web</div>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:800;color:var(--gold);line-height:1;flex-shrink:0;">+28%</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.45;">más facturación anual con presencia digital</div>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:12px;padding:10px 0;">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:800;color:var(--gold);line-height:1;flex-shrink:0;">24/7</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.45;">tu sitio trabaja aunque tú no estés</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="slide-num">03 / 10</div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SLIDE 4 — PRODUCTO / DEMO
+  ══════════════════════════════════ -->
+  <section class="slide" id="slide-4">
+    <div class="logo-mark">
+      <div class="logo-diamond"></div>
+      <span>Eterno Web Studio</span>
+    </div>
+
+    <div style="width:100%;max-width:900px;">
+      <div class="label">Producto</div>
+      <h2>Lo que entregamos.</h2>
+      <div class="rule left" style="margin-bottom:36px;"></div>
+
+      <div class="demo-wrap">
+        <div class="mockup-screen">
+          <div class="mockup-bar">
+            <div class="mockup-dot"></div>
+            <div class="mockup-dot"></div>
+            <div class="mockup-dot"></div>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-hero">
+              <span>Tu Portafolio</span>
+            </div>
+            <div class="mockup-lines">
+              <div class="mockup-line"></div>
+              <div class="mockup-line short"></div>
+              <div class="mockup-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;color:var(--gold);letter-spacing:0.04em;margin-bottom:16px;line-height:1.35;max-width:340px;">Google Maps abre la puerta.<br/>Tu sitio web cierra la venta.</p>
+          <ul class="bullets">
+            <li><strong>Diseño premium</strong> adaptado a tu estilo y marca</li>
+            <li><strong>Portafolio visual</strong> con tus mejores trabajos</li>
+            <li><strong>Formulario de reserva</strong> — clientes agendan directo</li>
+            <li><strong>SEO local</strong> — apareces cuando buscan tu servicio en CDMX</li>
+            <li><strong>Móvil 100%</strong> — perfecto en cualquier celular</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-num">04 / 10</div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SLIDE 5 — MODELO DE NEGOCIO
+  ══════════════════════════════════ -->
+  <section class="slide" id="slide-5">
+    <div class="logo-mark">
+      <div class="logo-diamond"></div>
+      <span>Eterno Web Studio</span>
+    </div>
+
+    <div style="width:100%;max-width:900px;">
+      <div class="label">Modelo de Negocio</div>
+      <h2>Simple. Transparente.<br/>Sin sorpresas.</h2>
+      <div class="rule left" style="margin-bottom:36px;"></div>
+
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="plan-name">Presencia</div>
+          <div class="amount">Gratis</div>
+          <ul>
+            <li>Construcción de sitio web premium</li>
+            <li>Galería desde tu Instagram</li>
+            <li>Página de booking y contacto</li>
+            <li>Bio link hub</li>
+            <li>SEO básico</li>
+            <li>Sin expiración</li>
+          </ul>
+          <div style="font-size:11px;color:var(--gray);margin-top:12px;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.06em;">Subdominio eternowebstudio.com/tunegocio</div>
+        </div>
+
+        <div class="price-card">
+          <div class="plan-name">Identidad</div>
+          <div class="amount">$499 <span>MXN / mes</span></div>
+          <div style="font-size:11px;color:var(--gray);margin-top:4px;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.06em;">$25 USD / mes</div>
+          <ul>
+            <li>Todo lo de Presencia</li>
+            <li>Tu propio dominio .com</li>
+            <li>SEO completo</li>
+            <li>Edición completa desde dashboard</li>
+            <li>Hosting + SSL incluidos</li>
+          </ul>
+          <div style="font-size:11px;color:var(--gray);margin-top:12px;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.06em;">Tú lo manejas — self-service</div>
+        </div>
+
+        <div class="price-card featured">
+          <div class="badge">Recomendado</div>
+          <div class="plan-name">Premium</div>
+          <div class="amount">$2,999 <span>MXN / mes</span></div>
+          <ul>
+            <li>Todo lo de Identidad</li>
+            <li>Atención personalizada</li>
+            <li>Tu consultor dedicado</li>
+            <li>Actualizaciones de contenido incluidas</li>
+            <li>Soporte prioritario (respuesta 4 hrs)</li>
+            <li>Reporte mensual de resultados</li>
+          </ul>
+          <div style="font-size:11px;color:var(--gray);margin-top:12px;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.06em;">Nosotros nos encargamos de todo</div>
+        </div>
+      </div>
+
+      <p style="text-align:center;margin-top:28px;font-size:15px;color:rgba(255,255,255,0.5);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.08em;max-width:900px;">Empieza gratis. Crece cuando estés listo.</p>
+    </div>
+
+    <div class="slide-num">05 / 10</div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SLIDE 6 — TRACCIÓN / VALIDACIÓN
+  ══════════════════════════════════ -->
+  <section class="slide" id="slide-6">
+    <div class="logo-mark">
+      <div class="logo-diamond"></div>
+      <span>Eterno Web Studio</span>
+    </div>
+
+    <div class="two-col" style="align-items:center;">
+      <div>
+        <div class="label">Tracción</div>
+        <h2>Ya lo estamos<br/>haciendo.</h2>
+        <div class="rule left"></div>
+        <p>Clientes activos en Houston, TX y Ciudad de México. El modelo está probado — ahora escalamos localmente.</p>
+
+        <div class="stats-row" style="margin-top:32px;">
+          <div class="stat-block">
+            <div class="num">48h</div>
+            <div class="desc">entrega garantizada</div>
+          </div>
+          <div class="stat-block">
+            <div class="num">2</div>
+            <div class="desc">ciudades activas</div>
+          </div>
+          <div class="stat-block">
+            <div class="num">100%</div>
+            <div class="desc">digital, sin oficina</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">2024</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Lanzamiento en Houston, TX</div>
+            <div class="tl-sub">Primeros clientes: tatuadores y barberos en mercado hispano</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2025</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Expansión a CDMX</div>
+            <div class="tl-sub">Primeros sitios activos en Ciudad de México</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">Ahora</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Programa CDMX Local</div>
+            <div class="tl-sub">Consultor presencial visitando negocios creativos en CDMX</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2026</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Meta: 100 negocios en CDMX</div>
+            <div class="tl-sub">Colonias: Roma, Condesa, Coyoacán, Centro, Polanco</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-num">06 / 10</div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SLIDE 7 — MERCADO OBJETIVO
+  ══════════════════════════════════ -->
+  <section class="slide" id="slide-7">
+    <div class="logo-mark">
+      <div class="logo-diamond"></div>
+      <span>Eterno Web Studio</span>
+    </div>
+
+    <div style="width:100%;max-width:900px;">
+      <div class="label">Mercado Objetivo</div>
+      <h2>Negocios creativos<br/>en Ciudad de México.</h2>
+      <div class="rule left"></div>
+
+      <div class="two-col" style="margin-top:8px;gap:48px;">
+        <div>
+          <p style="margin-bottom:20px;">Más de <strong style="color:var(--white);">180,000</strong> negocios creativos en CDMX sin presencia web profesional.</p>
+          <div class="tag-cloud">
+            <div class="tag highlight">Tatuadores</div>
+            <div class="tag highlight">Barberías</div>
+            <div class="tag highlight">Salones de Uñas</div>
+            <div class="tag">Ópticas Independientes</div>
+            <div class="tag">Cantinas y Bares</div>
+            <div class="tag">Salones de Belleza</div>
+            <div class="tag">Estudios de Yoga</div>
+            <div class="tag">Fotógrafos</div>
+            <div class="tag">Artistas & Diseñadores</div>
+          </div>
+        </div>
+
+        <div>
+          <ul class="bullets" style="margin-top:0;">
+            <li><strong>Perfil:</strong> Dueño-operador, 25–45 años, activo en Instagram</li>
+            <li><strong>Dolor:</strong> Excelentes en su arte, sin presencia digital</li>
+            <li><strong>Decisión:</strong> Rápida — si ven el valor, compran en la visita</li>
+            <li><strong>Ticket promedio:</strong> $499–$990 MXN/mes = alcanzable</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-num">07 / 10</div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SLIDE 8 — DIFERENCIACIÓN
+  ══════════════════════════════════ -->
+  <section class="slide" id="slide-8">
+    <div class="logo-mark">
+      <div class="logo-diamond"></div>
+      <span>Eterno Web Studio</span>
+    </div>
+
+    <div style="width:100%;max-width:900px;">
+      <div class="label">Diferenciación</div>
+      <h2>Por qué nosotros<br/>y no cualquiera.</h2>
+      <div class="rule left" style="margin-bottom:32px;"></div>
+
+      <div class="diff-grid">
+        <div class="diff-item">
+          <div class="diff-title">⚡ 48 Horas — No 4 semanas</div>
+          <div class="diff-body">Las agencias tardan meses. Nosotros entregamos antes de que cambies de opinión.</div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-title">📸 Usamos tu Instagram</div>
+          <div class="diff-body">Cero fricción. Tu contenido ya existe — lo convertimos en un sitio profesional.</div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-title">✦ Diseño Premium</div>
+          <div class="diff-body">No es una plantilla genérica. Cada sitio refleja la identidad única del negocio.</div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-title">💰 Sin pago inicial grande</div>
+          <div class="diff-body">$499/mes en lugar de $30K de golpe. El flujo de caja del negocio no se compromete.</div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-title">📍 Especialistas en creativos</div>
+          <div class="diff-body">Entendemos la industria del tatuaje, la barbería, el arte. No somos agencia genérica.</div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-title">🤝 Consultor local presencial</div>
+          <div class="diff-body">Nuestro consultor viene a tu negocio. No es un correo de India — es alguien de aquí.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-num">08 / 10</div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SLIDE 9 — ADD-ONS
+  ══════════════════════════════════ -->
+  <section class="slide" id="slide-9">
+    <div class="logo-mark">
+      <div class="logo-diamond"></div>
+      <span>Eterno Web Studio</span>
+    </div>
+
+    <div style="width:100%;max-width:900px;">
+      <div class="label">Servicios Adicionales</div>
+      <h2>Complementa tu<br/>presencia digital.</h2>
+      <div class="rule left" style="margin-bottom:32px;"></div>
+
+      <div class="addon-grid">
+        <div class="addon-item">
+          <div>
+            <div class="addon-name">📍 Google Business Profile</div>
+            <div class="addon-sub">Apareces en Google Maps. Perfil completo, verificado, con QR para reseñas.</div>
+          </div>
+          <div class="addon-price">$999 <span style="font-size:12px;color:var(--gray);font-weight:400;">MXN</span></div>
+        </div>
+
+        <div class="addon-item">
+          <div>
+            <div class="addon-name">📱 Facebook + Instagram</div>
+            <div class="addon-sub">Perfiles profesionales creados y configurados en tus redes.</div>
+          </div>
+          <div class="addon-price">$1,499 <span style="font-size:12px;color:var(--gray);font-weight:400;">MXN</span></div>
+        </div>
+
+        <div class="addon-item">
+          <div>
+            <div class="addon-name">🎨 Logo + Identidad Visual</div>
+            <div class="addon-sub">Logo profesional, paleta de colores, tipografías. Todo en un PDF de marca.</div>
+          </div>
+          <div class="addon-price">$2,499 <span style="font-size:12px;color:var(--gray);font-weight:400;">MXN</span></div>
+        </div>
+
+        <div class="addon-item">
+          <div>
+            <div class="addon-name">📷 Sesión Fotográfica</div>
+            <div class="addon-sub">Fotos profesionales de tu negocio para sitio web, redes y Google Maps.</div>
+          </div>
+          <div class="addon-price">$5,499 <span style="font-size:12px;color:var(--gray);font-weight:400;">MXN</span></div>
+        </div>
+      </div>
+
+      <p style="text-align:center;margin-top:24px;font-size:13px;color:rgba(255,255,255,0.35);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.1em;text-transform:uppercase;max-width:900px;">Todos los servicios son de setup único. Precios en MXN.</p>
+    </div>
+
+    <div class="slide-num">09 / 10</div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SLIDE 10 — CALL TO ACTION
+  ══════════════════════════════════ -->
+  <section class="slide" id="slide-10">
+    <div class="logo-mark">
+      <div class="logo-diamond"></div>
+      <span>Eterno Web Studio</span>
+    </div>
+
+    <h2>¿Listo para que<br/>tu negocio sea<br/><span style="color:var(--gold);">eterno en Google?</span></h2>
+    <div class="rule" style="margin-top:24px;"></div>
+
+    <div class="cta-box">
+      <div class="cta-name">Eterno Web Studio</div>
+      <div class="cta-title">eternowebstudio.com</div>
+      <div class="cta-contact">
+        Tu sitio puede estar listo en <strong>48 horas.</strong><br/>
+        Sin pago inicial. Sin complicaciones.<br/>
+        Empieza con el plan Gratis hoy mismo.
+      </div>
+      <div class="cta-cta">Comenzar Ahora</div>
+    </div>
+
+    <div class="slide-num">10 / 10</div>
+  </section>
+
+</div><!-- /#deck -->
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let current = 0;
+  let isAnimating = false;
+
+  function goTo(index) {
+    if (isAnimating) return;
+    if (index < 0 || index >= slides.length) return;
+    if (index === current) return;
+
+    isAnimating = true;
+    slides[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+
+    setTimeout(() => { isAnimating = false; }, 600);
+  }
+
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goTo(current - 1);
+  });
+
+  // Touch / swipe
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  document.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    const absDx = Math.abs(dx);
+    const absDy = Math.abs(dy);
+
+    if (absDx < 40 && absDy < 40) return; // tiny tap — ignore
+
+    if (absDx >= absDy) {
+      // Horizontal swipe
+      if (dx < 0) goTo(current + 1);
+      else        goTo(current - 1);
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>

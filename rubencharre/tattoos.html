@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tattoos — Ruben Charre | Portfolio</title>
+  <meta name="description" content="Browse Ruben Charre's tattoo portfolio — neo-traditional, anime, illustrative, and large-scale work from San Luis Potosí, Mexico.">
+  <link rel="canonical" href="https://eternowebstudio.com/rubencharre/tattoos.html">
+  <meta property="og:title" content="Tattoo Portfolio — Ruben Charre">
+  <meta property="og:description" content="Neo-traditional, anime, and illustrative tattoos from San Luis Potosí, Mexico.">
+  <meta property="og:image" content="https://eternowebstudio.com/rubencharre/images/g1.jpg">
+  <meta property="og:url" content="https://eternowebstudio.com/rubencharre/tattoos.html">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --black: #0a0a0a; --charcoal: #1a1a1a; --gold: #C9A84C; --white: #f5f5f0; --dim: #888; --border: rgba(255,255,255,0.07); }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; letter-spacing: 0.12em; color: var(--white); text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { color: var(--dim); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--white); margin: 5px 0; }
+    .mobile-menu { display: none; position: fixed; top: 65px; left: 0; right: 0; z-index: 99; background: var(--charcoal); padding: 24px 48px; border-bottom: 1px solid var(--border); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; color: var(--white); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .book-float { position: fixed; bottom: 32px; right: 32px; z-index: 200; background: var(--gold); color: #000; font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; padding: 14px 22px; border-radius: 2px; box-shadow: 0 4px 24px rgba(201,168,76,0.3); transition: transform 0.2s; }
+    .book-float:hover { transform: translateY(-2px); }
+    .page-hero { padding: 160px 72px 80px; background: var(--charcoal); border-bottom: 1px solid var(--border); }
+    .page-eyebrow { font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 6vw, 5rem); font-weight: 300; line-height: 1; }
+    .gallery-full { padding: 72px; }
+    .masonry-grid {
+      columns: 3;
+      column-gap: 3px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 3px;
+      overflow: hidden;
+    }
+    .masonry-item img {
+      width: 100%; display: block;
+      filter: brightness(0.85);
+      transition: filter 0.4s, transform 0.4s;
+    }
+    .masonry-item:hover img { filter: brightness(1); transform: scale(1.02); }
+    .booking-cta { background: var(--charcoal); padding: 80px 72px; text-align: center; border-top: 1px solid var(--border); }
+    .booking-cta h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; margin-bottom: 16px; }
+    .booking-cta p { color: var(--dim); margin-bottom: 32px; }
+    .btn-gold { display: inline-block; background: var(--gold); color: #000; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 16px 40px; font-weight: 500; transition: opacity 0.2s; }
+    .btn-gold:hover { opacity: 0.88; }
+    footer { background: var(--charcoal); padding: 48px 72px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--dim); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--dim); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { color: var(--dim); font-size: 0.72rem; }
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; } .nav-links { display: none; } .hamburger { display: block; }
+      .page-hero { padding: 120px 24px 60px; }
+      .gallery-full { padding: 40px 16px; }
+      .masonry-grid { columns: 2; }
+      .booking-cta { padding: 60px 24px; }
+      footer { flex-direction: column; gap: 24px; text-align: center; padding: 40px 24px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+      .book-float { bottom: 20px; right: 20px; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/rubencharre/" class="nav-logo">RUBEN CHARRE</a>
+  <ul class="nav-links">
+    <li><a href="/rubencharre/">Home</a></li>
+    <li><a href="/rubencharre/about.html">About</a></li>
+    <li><a href="/rubencharre/tattoos.html" class="active">Tattoos</a></li>
+    <li><a href="/rubencharre/booking.html">Booking</a></li>
+    <li><a href="/rubencharre/testimonials.html">Testimonials</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="/rubencharre/">Home</a>
+  <a href="/rubencharre/about.html">About</a>
+  <a href="/rubencharre/tattoos.html">Tattoos</a>
+  <a href="/rubencharre/booking.html">Booking</a>
+  <a href="/rubencharre/testimonials.html">Testimonials</a>
+</div>
+
+<div class="page-hero">
+  <p class="page-eyebrow fade-up">Portfolio</p>
+  <h1 class="fade-up">Tattoo Work</h1>
+</div>
+
+<div class="gallery-full">
+  <div class="masonry-grid">
+    <div class="masonry-item fade-up"><img src="/rubencharre/images/g1.jpg" alt="Tattoo by Ruben Charre" loading="lazy"></div>
+    <div class="masonry-item fade-up"><img src="/rubencharre/images/g2.jpg" alt="Tattoo by Ruben Charre" loading="lazy"></div>
+    <div class="masonry-item fade-up"><img src="/rubencharre/images/g3.jpg" alt="Tattoo by Ruben Charre" loading="lazy"></div>
+    <div class="masonry-item fade-up"><img src="/rubencharre/images/g4.jpg" alt="Tattoo by Ruben Charre" loading="lazy"></div>
+    <div class="masonry-item fade-up"><img src="/rubencharre/images/g5.jpg" alt="Tattoo by Ruben Charre" loading="lazy"></div>
+    <div class="masonry-item fade-up"><img src="/rubencharre/images/g6.jpg" alt="Tattoo by Ruben Charre" loading="lazy"></div>
+    <div class="masonry-item fade-up"><img src="/rubencharre/images/g7.jpg" alt="Tattoo by Ruben Charre" loading="lazy"></div>
+    <div class="masonry-item fade-up"><img src="/rubencharre/images/g8.jpg" alt="Tattoo by Ruben Charre" loading="lazy"></div>
+    <div class="masonry-item fade-up"><img src="/rubencharre/images/g9.jpg" alt="Tattoo by Ruben Charre" loading="lazy"></div>
+    <div class="masonry-item fade-up"><img src="/rubencharre/images/g10.jpg" alt="Tattoo by Ruben Charre" loading="lazy"></div>
+    <div class="masonry-item fade-up"><img src="/rubencharre/images/g11.jpg" alt="Tattoo by Ruben Charre" loading="lazy"></div>
+    <div class="masonry-item fade-up"><img src="/rubencharre/images/g12.jpg" alt="Tattoo by Ruben Charre" loading="lazy"></div>
+  </div>
+</div>
+
+<div class="booking-cta">
+  <h2 class="fade-up">Like What You See?</h2>
+  <p class="fade-up">Reach out and let's create something made for you.</p>
+  <a href="/rubencharre/booking.html" class="btn-gold fade-up">Book a Session</a>
+</div>
+
+<footer>
+  <div class="footer-logo">Ruben Charre</div>
+  <div class="footer-links">
+    <a href="/rubencharre/about.html">About</a>
+    <a href="/rubencharre/tattoos.html">Tattoos</a>
+    <a href="/rubencharre/booking.html">Booking</a>
+    <a href="/rubencharre/testimonials.html">Testimonials</a>
+    <a href="https://instagram.com/rubencharre" target="_blank" rel="noopener">Instagram</a>
+  </div>
+  <div class="footer-copy">© 2026 Ruben Charre</div>
+</footer>
+
+<a href="/rubencharre/booking.html" class="book-float">Book a Session</a>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

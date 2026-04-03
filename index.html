@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eterno Web Studio — Tu Legado, Hecho Eterno</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:        #0a0805;
+      --paper:      #f5f0e8;
+      --gold:       #c9a030;
+      --gold-dark:  #8a6b1a;
+      --rust:       #8b3a1a;
+      --cream:      #e8e0ce;
+      --dim:        #6b6055;
+      --border:     rgba(201,160,48,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--paper);
+      font-family: 'Syne', sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ─── CUSTOM CURSOR ──────────────────────────── */
+    .cursor {
+      position: fixed;
+      width: 10px; height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease;
+      mix-blend-mode: difference;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.18s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s;
+      opacity: 0.5;
+    }
+    body:hover .cursor { opacity: 1; }
+
+    /* ─── GRAIN OVERLAY ──────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9990;
+      pointer-events: none;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    /* ─── NAV ────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 52px;
+      mix-blend-mode: difference;
+    }
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--paper);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-mark {
+      width: 18px; height: 18px;
+      border: 1.5px solid var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .nav-right a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-right a:hover { color: var(--paper); }
+    .nav-cta {
+      border: 1px solid var(--gold) !important;
+      color: var(--gold) !important;
+      padding: 8px 20px;
+    }
+    .nav-cta:hover {
+      background: var(--gold) !important;
+      color: var(--ink) !important;
+    }
+
+    /* ─── HERO ───────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 0 72px 52px;
+      position: relative;
+      border-right: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(64px, 8vw, 118px);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      margin-bottom: 0;
+    }
+    .hero h1 .line-gold {
+      color: var(--gold);
+      font-style: italic;
+      display: block;
+    }
+    .hero h1 .line-outline {
+      -webkit-text-stroke: 1px var(--paper);
+      color: transparent;
+      display: block;
+    }
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 52px 72px 52px;
+      gap: 48px;
+    }
+    .hero-sub {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      color: rgba(245,240,232,0.65);
+      line-height: 1.7;
+      max-width: 340px;
+    }
+    .hero-sub em {
+      font-style: normal;
+      color: var(--paper);
+      font-weight: 700;
+    }
+    .hero-note {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--dim);
+      letter-spacing: 0.08em;
+      line-height: 1.6;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .hero-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 18px 36px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      width: fit-content;
+    }
+    .btn-hero:hover {
+      background: var(--paper);
+      transform: translateX(6px);
+    }
+    .btn-hero-arrow {
+      font-size: 1.1rem;
+      transition: transform 0.2s;
+    }
+    .btn-hero:hover .btn-hero-arrow { transform: translateX(4px); }
+    .hero-locations {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    /* Vertical label */
+    .hero-vertical-label {
+      position: absolute;
+      right: -1px;
+      bottom: 50%;
+      transform: translateY(50%) rotate(90deg) translateX(50%);
+      transform-origin: right center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* ─── MANIFESTO ──────────────────────────────── */
+    .manifesto {
+      border-top: 1px solid var(--border);
+      padding: 120px 52px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .manifesto-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding-top: 12px;
+    }
+    .manifesto blockquote {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--paper);
+    }
+    .manifesto blockquote .accent {
+      color: var(--gold);
+      font-style: italic;
+    }
+    .manifesto-attr {
+      margin-top: 32px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── PROCESS ────────────────────────────────── */
+    .process {
+      border-top: 1px solid var(--border);
+    }
+    .process-header {
+      padding: 80px 52px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .section-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .section-h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(42px, 6vw, 80px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--paper);
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+      margin-top: 64px;
+    }
+    .process-step {
+      padding: 56px 48px;
+      border-right: 1px solid var(--border);
+      position: relative;
+      transition: background 0.3s;
+    }
+    .process-step:last-child { border-right: none; }
+    .process-step:hover { background: rgba(201,160,48,0.04); }
+    .step-number {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 5rem;
+      font-weight: 900;
+      color: rgba(201,160,48,0.12);
+      line-height: 1;
+      margin-bottom: 28px;
+      letter-spacing: -0.04em;
+    }
+    .step-icon-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .step-icon-label::before {
+      content: '';
+      display: block;
+      width: 20px; height: 1px;
+      background: var(--gold);
+    }
+    .process-step h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--paper);
+      margin-bottom: 16px;
+    }
+    .process-step p {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      color: var(--dim);
+      line-height: 1.7;
+    }
+
+    /* ─── PRICING ────────────────────────────────── */
+    .pricing {
+      border-top: 1px solid var(--border);
+      padding: 100px 52px;
+    }
+    .pricing-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 72px;
+    }
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+    }
+    .plan {
+      padding: 56px 52px;
+      position: relative;
+      transition: background 0.3s;
+    }
+    .plan:first-child { border-right: 1px solid var(--border); }
+    .plan.featured { background: rgba(201,160,48,0.05); }
+    .plan-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .plan.featured .plan-tag { color: var(--gold); }
+    .plan-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--paper);
+      margin-bottom: 8px;
+    }
+    .plan-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .plan-dollar {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+    }
+    .plan-amount {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 4.5rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--paper);
+    }
+    .plan-period {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--dim);
+      margin-bottom: 48px;
+      letter-spacing: 0.08em;
+    }
+    .plan-features {
+      list-style: none;
+      margin-bottom: 48px;
+    }
+    .plan-features li {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.88rem;
+      color: rgba(245,240,232,0.75);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(201,160,48,0.1);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .plan-features li::before {
+      content: '→';
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .btn-plan {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 32px;
+      transition: all 0.25s ease;
+    }
+    .btn-outline {
+      border: 1px solid rgba(201,160,48,0.4);
+      color: var(--paper);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateX(4px);
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--ink);
+    }
+    .btn-gold:hover {
+      background: var(--paper);
+      transform: translateX(4px);
+    }
+
+    /* ─── PORTFOLIO ──────────────────────────────── */
+    .portfolio {
+      border-top: 1px solid var(--border);
+      padding: 100px 52px;
+    }
+    .portfolio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 72px;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+    }
+    .site-card {
+      padding: 40px 36px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .site-card:nth-child(3n) { border-right: none; }
+    .site-card:nth-child(n+4) { border-bottom: none; }
+    .site-card::after {
+      content: '→';
+      position: absolute;
+      bottom: 36px; right: 32px;
+      color: var(--gold);
+      font-size: 1.1rem;
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: all 0.25s ease;
+    }
+    .site-card:hover { background: rgba(201,160,48,0.04); }
+    .site-card:hover::after { opacity: 1; transform: translateX(0); }
+    .site-idx {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .site-card-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--paper);
+      margin-bottom: 8px;
+    }
+    .site-card-domain {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--dim);
+      margin-bottom: 0;
+      letter-spacing: 0.05em;
+    }
+    .site-card-type {
+      margin-top: auto;
+      padding-top: 24px;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(201,160,48,0.6);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ─── CTA ────────────────────────────────────── */
+    .cta {
+      border-top: 1px solid var(--border);
+      padding: 140px 52px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 80px;
+      align-items: end;
+    }
+    .cta-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(52px, 8vw, 110px);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      color: var(--paper);
+    }
+    .cta-title .italic { font-style: italic; color: var(--gold); }
+    .cta-title .outline {
+      -webkit-text-stroke: 1px rgba(245,240,232,0.3);
+      color: transparent;
+      display: block;
+    }
+    .cta-right {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: flex-start;
+      max-width: 300px;
+    }
+    .cta-sub {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.92rem;
+      color: var(--dim);
+      line-height: 1.7;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-left {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--paper); }
+
+    /* ─── ANIMATIONS ─────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-left > *, .hero-right > * {
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+    }
+    .hero-eyebrow    { animation-delay: 0.1s; }
+    .hero h1         { animation-delay: 0.25s; }
+    .hero-sub        { animation-delay: 0.15s; }
+    .hero-cta-wrap   { animation-delay: 0.3s; }
+    .hero-note       { animation-delay: 0.4s; }
+    .hero-locations  { animation-delay: 0.45s; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ─── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 160px 32px 60px; border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-right { padding: 60px 32px 80px; }
+      .hero-vertical-label { display: none; }
+      .manifesto { grid-template-columns: 1fr; gap: 24px; padding: 80px 32px; }
+      .process-header, .pricing, .portfolio, .cta { padding-left: 32px; padding-right: 32px; }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .pricing-cards, .portfolio-grid { grid-template-columns: 1fr; }
+      .plan:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+      .site-card { border-right: none !important; }
+      .site-card:last-child { border-bottom: none; }
+      .cta { grid-template-columns: 1fr; }
+      nav { padding: 20px 32px; }
+      footer { padding: 32px; flex-direction: column; gap: 20px; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+    @media (max-width: 640px) {
+      .nav-right a:not(.nav-cta) { display: none; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .pricing-header, .portfolio-header, .process-header { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-mark"></div>
+      Eterno
+    </a>
+    <div class="nav-right">
+      <a href="#process">Process</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#work">Work</a>
+      <a href="#contact" class="nav-cta">Get Started</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Houston, TX &nbsp;·&nbsp; CDMX</p>
+      <h1>
+        Tu<br>
+        <span class="line-gold">Legado,</span>
+        <span class="line-outline">Eterno.</span>
+      </h1>
+      <div class="hero-vertical-label">Eterno Web Studio — Est. 2024</div>
+    </div>
+    <div class="hero-right">
+      <p class="hero-sub">
+        Custom websites for <em>tattoo artists</em>, <em>barbers</em>, and <em>creatives</em>.<br><br>
+        Built from scratch. Made to last. Yours forever.
+      </p>
+      <div class="hero-cta-wrap">
+        <a href="#contact" class="btn-hero">
+          Start Your Site Today
+          <span class="btn-hero-arrow">→</span>
+        </a>
+        <p class="hero-locations">No templates &nbsp;·&nbsp; No shortcuts &nbsp;·&nbsp; Just intention</p>
+      </div>
+      <p class="hero-note">
+        Drop us your Instagram handle.<br>
+        We'll build the rest.
+      </p>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <div class="manifesto">
+    <p class="manifesto-tag reveal">Studio Philosophy</p>
+    <div>
+      <blockquote class="reveal reveal-delay-1">
+        "We are not a website builder.<br>
+        We are not a tech platform.<br>
+        We are <span class="accent">a craft studio</span> —<br>
+        like a tattoo shop, but for websites."
+      </blockquote>
+      <p class="manifesto-attr reveal reveal-delay-2">— Eterno Web Studio &nbsp;·&nbsp; Founded in Houston, TX &amp; CDMX &nbsp;·&nbsp; Rooted in creative culture</p>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="process-header">
+      <p class="section-tag reveal">How It Works</p>
+      <h2 class="section-h2 reveal reveal-delay-1">The Process</h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-number">01</div>
+        <p class="step-icon-label">Send Your Instagram</p>
+        <h3>We Study Your World</h3>
+        <p>Drop us your handle. We study your portfolio, your style, your audience. We get it before writing a single line of code.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-number">02</div>
+        <p class="step-icon-label">We Build Your Site</p>
+        <h3>Built From Scratch</h3>
+        <p>Custom design built from scratch. Mobile-first, fast-loading, optimized for Google and everywhere your clients search. Nothing off a template.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-number">03</div>
+        <p class="step-icon-label">You Go Live</p>
+        <h3>Your Brand, Permanent</h3>
+        <p>Your site is live. Your brand is permanent. Hosting, updates, maintenance — all handled. You focus on your craft.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="pricing-header">
+      <p class="section-tag reveal">Pricing</p>
+      <h2 class="section-h2 reveal reveal-delay-1">Simple &amp; Flat</h2>
+    </div>
+    <div class="pricing-cards">
+      <div class="plan reveal">
+        <p class="plan-tag">— Starter Plan</p>
+        <p class="plan-name">Essential</p>
+        <div class="plan-price-row">
+          <span class="plan-dollar">$</span>
+          <span class="plan-amount">25</span>
+        </div>
+        <p class="plan-period">per month · billed monthly</p>
+        <ul class="plan-features">
+          <li>Custom multi-page website</li>
+          <li>Custom domain connection</li>
+          <li>SEO optimization</li>
+          <li>Contact &amp; booking integration</li>
+          <li>Monthly content updates</li>
+          <li>Email support</li>
+        </ul>
+        <a href="#contact" class="btn-plan btn-outline">Start Building →</a>
+      </div>
+      <div class="plan featured reveal reveal-delay-1">
+        <p class="plan-tag">— Pro Plan &nbsp; ★ Most Popular</p>
+        <p class="plan-name">Pro</p>
+        <div class="plan-price-row">
+          <span class="plan-dollar">$</span>
+          <span class="plan-amount">45</span>
+        </div>
+        <p class="plan-period">per month · billed monthly</p>
+        <ul class="plan-features">
+          <li>Everything in Starter</li>
+          <li>Priority support</li>
+          <li>Advanced gallery with filtering</li>
+          <li>Analytics dashboard</li>
+          <li>Unlimited content updates</li>
+          <li>Social media link integration</li>
+          <li>Custom features on request</li>
+        </ul>
+        <a href="#contact" class="btn-plan btn-gold">Go Pro →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="work">
+    <div class="portfolio-header">
+      <p class="section-tag reveal">Our Work</p>
+      <h2 class="section-h2 reveal reveal-delay-1">Sites We've Built</h2>
+    </div>
+    <div class="portfolio-grid">
+      <a href="https://tattoosbypaketh.com" target="_blank" class="site-card reveal">
+        <p class="site-idx">001</p>
+        <h3 class="site-card-name">Paketh</h3>
+        <p class="site-card-domain">tattoosbypaketh.com</p>
+        <p class="site-card-type">Tattoo Artist</p>
+      </a>
+      <a href="https://frankendots.com" target="_blank" class="site-card reveal reveal-delay-1">
+        <p class="site-idx">002</p>
+        <h3 class="site-card-name">Frankendots</h3>
+        <p class="site-card-domain">frankendots.com</p>
+        <p class="site-card-type">Tattoo Artist</p>
+      </a>
+      <a href="https://infernalgarden.com" target="_blank" class="site-card reveal reveal-delay-2">
+        <p class="site-idx">003</p>
+        <h3 class="site-card-name">Infernal Garden</h3>
+        <p class="site-card-domain">infernalgarden.com</p>
+        <p class="site-card-type">Tattoo Studio</p>
+      </a>
+      <a href="https://tatsuink.com" target="_blank" class="site-card reveal">
+        <p class="site-idx">004</p>
+        <h3 class="site-card-name">Tatsu Ink</h3>
+        <p class="site-card-domain">tatsuink.com</p>
+        <p class="site-card-type">Tattoo Studio</p>
+      </a>
+      <a href="https://inkversetattoo.com" target="_blank" class="site-card reveal reveal-delay-1">
+        <p class="site-idx">005</p>
+        <h3 class="site-card-name">Inkverse Tattoo</h3>
+        <p class="site-card-domain">inkversetattoo.com</p>
+        <p class="site-card-type">Tattoo Studio</p>
+      </a>
+      <a href="https://rubencharre.com" target="_blank" class="site-card reveal reveal-delay-2">
+        <p class="site-idx">006</p>
+        <h3 class="site-card-name">Ruben Charre</h3>
+        <p class="site-card-domain">rubencharre.com</p>
+        <p class="site-card-type">Creative</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div>
+      <h2 class="cta-title reveal">
+        Your Legacy<br>
+        <span class="italic">Starts</span>
+        <span class="outline"> Here.</span>
+      </h2>
+    </div>
+    <div class="cta-right reveal reveal-delay-1">
+      <p class="cta-sub">Send us your Instagram and we'll take it from there. No tech knowledge needed. No long contracts. Just your craft — online, forever.</p>
+      <a href="mailto:hello@eternowebstudio.com" class="btn-hero">
+        Start Today
+        <span class="btn-hero-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      <p>© 2026 Eterno Web Studio</p>
+      <p style="margin-top:4px;">Houston, TX · CDMX</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#process">Process</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#">Privacy</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    function animateCursor() {
+      cursor.style.left = mx + 'px';
+      cursor.style.top  = my + 'px';
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width = '20px'; cursor.style.height = '20px';
+        ring.style.width = '56px'; ring.style.height = '56px'; ring.style.opacity = '0.8';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width = '10px'; cursor.style.height = '10px';
+        ring.style.width = '36px'; ring.style.height = '36px'; ring.style.opacity = '0.5';
+      });
+    });
+
+    // Scroll reveals
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

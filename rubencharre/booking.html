@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Session — Ruben Charre | Tattoo Artist</title>
+  <meta name="description" content="Book a tattoo session with Ruben Charre in San Luis Potosí, Mexico. Send a message via Instagram DM to get started.">
+  <link rel="canonical" href="https://eternowebstudio.com/rubencharre/booking.html">
+  <meta property="og:title" content="Book a Session — Ruben Charre">
+  <meta property="og:description" content="Start your tattoo project with Ruben Charre in San Luis Potosí, Mexico.">
+  <meta property="og:image" content="https://eternowebstudio.com/rubencharre/images/ruben-hero.jpg">
+  <meta property="og:url" content="https://eternowebstudio.com/rubencharre/booking.html">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --black: #0a0a0a; --charcoal: #1a1a1a; --gold: #C9A84C; --white: #f5f5f0; --dim: #888; --border: rgba(255,255,255,0.07); }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; letter-spacing: 0.12em; color: var(--white); text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { color: var(--dim); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1px; background: var(--white); margin: 5px 0; }
+    .mobile-menu { display: none; position: fixed; top: 65px; left: 0; right: 0; z-index: 99; background: var(--charcoal); padding: 24px 48px; border-bottom: 1px solid var(--border); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; color: var(--white); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .book-float { position: fixed; bottom: 32px; right: 32px; z-index: 200; background: var(--gold); color: #000; font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; padding: 14px 22px; border-radius: 2px; box-shadow: 0 4px 24px rgba(201,168,76,0.3); transition: transform 0.2s; }
+    .book-float:hover { transform: translateY(-2px); }
+    .page-hero { padding: 160px 72px 80px; background: var(--charcoal); border-bottom: 1px solid var(--border); }
+    .page-eyebrow { font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 6vw, 5rem); font-weight: 300; line-height: 1; }
+    .booking-body { padding: 96px 72px; max-width: 1200px; margin: 0 auto; }
+    .booking-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .booking-info h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; margin-bottom: 24px; }
+    .booking-info p { color: var(--dim); line-height: 1.8; margin-bottom: 20px; font-size: 0.95rem; }
+    .info-block { margin-top: 40px; padding: 32px; background: var(--charcoal); border: 1px solid var(--border); }
+    .info-block h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; margin-bottom: 16px; }
+    .info-item { display: flex; gap: 12px; margin-bottom: 12px; color: var(--dim); font-size: 0.88rem; }
+    .info-item span:first-child { color: var(--gold); font-size: 0.8rem; min-width: 16px; }
+    .form-panel { }
+    .form-panel h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; margin-bottom: 32px; }
+    .form-group { margin-bottom: 24px; }
+    .form-group label { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; background: var(--charcoal); border: 1px solid var(--border); color: var(--white);
+      font-family: 'Inter', sans-serif; font-size: 0.92rem; font-weight: 300;
+      padding: 14px 16px; outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--gold); }
+    .form-group select option { background: var(--charcoal); }
+    .form-group textarea { resize: vertical; min-height: 140px; }
+    .ig-cta { margin-top: 40px; padding: 32px; background: var(--charcoal); border: 1px solid var(--border); text-align: center; }
+    .ig-cta p { color: var(--dim); margin-bottom: 20px; font-size: 0.9rem; }
+    .btn-ig {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      color: #fff; text-decoration: none; font-size: 0.78rem;
+      letter-spacing: 0.14em; text-transform: uppercase; padding: 14px 28px;
+      font-weight: 500; transition: opacity 0.2s;
+    }
+    .btn-ig:hover { opacity: 0.88; }
+    .btn-submit { width: 100%; background: var(--gold); color: #000; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 18px; font-weight: 500; transition: opacity 0.2s; margin-top: 8px; }
+    .btn-submit:hover { opacity: 0.88; }
+    footer { background: var(--charcoal); padding: 48px 72px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--dim); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--dim); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { color: var(--dim); font-size: 0.72rem; }
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; } .nav-links { display: none; } .hamburger { display: block; }
+      .page-hero { padding: 120px 24px 60px; }
+      .booking-body { padding: 60px 24px; }
+      .booking-layout { grid-template-columns: 1fr; gap: 48px; }
+      footer { flex-direction: column; gap: 24px; text-align: center; padding: 40px 24px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+      .book-float { bottom: 20px; right: 20px; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/rubencharre/" class="nav-logo">RUBEN CHARRE</a>
+  <ul class="nav-links">
+    <li><a href="/rubencharre/">Home</a></li>
+    <li><a href="/rubencharre/about.html">About</a></li>
+    <li><a href="/rubencharre/tattoos.html">Tattoos</a></li>
+    <li><a href="/rubencharre/booking.html" class="active">Booking</a></li>
+    <li><a href="/rubencharre/testimonials.html">Testimonials</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="/rubencharre/">Home</a>
+  <a href="/rubencharre/about.html">About</a>
+  <a href="/rubencharre/tattoos.html">Tattoos</a>
+  <a href="/rubencharre/booking.html">Booking</a>
+  <a href="/rubencharre/testimonials.html">Testimonials</a>
+</div>
+
+<div class="page-hero">
+  <p class="page-eyebrow fade-up">Let's Build Something</p>
+  <h1 class="fade-up">Book a Session</h1>
+</div>
+
+<div class="booking-body">
+  <div class="booking-layout">
+    <div class="booking-info fade-up">
+      <h2>Start Your Project</h2>
+      <p>I work on a consultation-first basis. Whether you're bringing in a fully realized concept or just a feeling you can't quite describe yet — reach out and we'll figure it out together.</p>
+      <p>The best way to reach me is through Instagram DM. Send me a message with your idea, the placement you're thinking, and any reference images you have. I'll get back to you within a few days.</p>
+
+      <div class="info-block">
+        <h3>What to Include</h3>
+        <div class="info-item"><span>→</span><span>Your concept or inspiration images</span></div>
+        <div class="info-item"><span>→</span><span>Placement on the body (arm, back, etc.)</span></div>
+        <div class="info-item"><span>→</span><span>Approximate size you're envisioning</span></div>
+        <div class="info-item"><span>→</span><span>Any style preferences (color, black & grey)</span></div>
+        <div class="info-item"><span>→</span><span>Your availability / preferred timeframe</span></div>
+      </div>
+
+      <div class="info-block" style="margin-top:20px;">
+        <h3>Studio</h3>
+        <div class="info-item"><span>📍</span><span>Black Soul Tattoo SLP<br>San Luis Potosí, Mexico</span></div>
+        <div class="info-item"><span>📸</span><span><a href="https://instagram.com/rubencharre" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">@rubencharre</a></span></div>
+      </div>
+    </div>
+
+    <div class="form-panel fade-up">
+      <h2>Send a Message</h2>
+
+      <!-- Instagram DM CTA - primary method -->
+      <div class="ig-cta">
+        <p>The fastest way to connect — send a DM directly on Instagram with your idea and references.</p>
+        <a href="https://www.instagram.com/rubencharre/" target="_blank" rel="noopener" class="btn-ig">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Message on Instagram
+        </a>
+      </div>
+
+      <!-- Fallback inquiry form -->
+      <form action="https://www.instagram.com/rubencharre/" method="get" target="_blank" style="margin-top:40px;">
+        <p style="color:var(--dim);font-size:0.82rem;margin-bottom:24px;">Or use this form to organize your thoughts before reaching out:</p>
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="First name is fine">
+        </div>
+        <div class="form-group">
+          <label for="concept">Your Concept</label>
+          <textarea id="concept" name="concept" placeholder="Describe your idea — style, subject, feeling, anything helps..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="placement">Placement & Size</label>
+          <input type="text" id="placement" name="placement" placeholder="e.g. Left forearm, about 10cm">
+        </div>
+        <div class="form-group">
+          <label for="style">Style Preference</label>
+          <select id="style" name="style">
+            <option value="">Select a style...</option>
+            <option>Neo-Traditional</option>
+            <option>Japanese Influenced</option>
+            <option>Anime / Pop Culture</option>
+            <option>Portraiture / Realism</option>
+            <option>Illustrative</option>
+            <option>Black & Grey</option>
+            <option>Full Color</option>
+            <option>Not sure — open to ideas</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit">Continue to Instagram DM →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Ruben Charre</div>
+  <div class="footer-links">
+    <a href="/rubencharre/about.html">About</a>
+    <a href="/rubencharre/tattoos.html">Tattoos</a>
+    <a href="/rubencharre/booking.html">Booking</a>
+    <a href="/rubencharre/testimonials.html">Testimonials</a>
+    <a href="https://instagram.com/rubencharre" target="_blank" rel="noopener">Instagram</a>
+  </div>
+  <div class="footer-copy">© 2026 Ruben Charre</div>
+</footer>
+
+<a href="https://www.instagram.com/rubencharre/" target="_blank" rel="noopener" class="book-float">Book a Session</a>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

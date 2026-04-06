@@ -1,668 +1,910 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IA Sin Rodeos 🌿 — Workshop en CDMX</title>
-  <meta name="description" content="Workshop presencial de IA para negocios. CDMX — 25 de abril de 2026. Aprende a tener tu negocio en línea con inteligencia artificial.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IA Sin Rodeos — Workshop Presencial CDMX · Eterno Web Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0A0A0A;
-      --gold: #C9A84C;
-      --gold-light: #D4B86A;
-      --white: #FFFFFF;
-      --gray: #888888;
-      --gray-light: #F0F0F0;
-      --gray-dark: #1A1A1A;
+      --ink:        #0a0805;
+      --paper:      #f5f0e8;
+      --gold:       #c9a030;
+      --gold-dark:  #8a6b1a;
+      --rust:       #8b3a1a;
+      --cream:      #e8e0ce;
+      --dim:        #6b6055;
+      --border:     rgba(201,160,48,0.25);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    h1, h2, h3, h4 {
+      background: var(--ink);
+      color: var(--paper);
       font-family: 'Syne', sans-serif;
-      line-height: 1.2;
+      overflow-x: hidden;
+      cursor: none;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
+    /* ─── CUSTOM CURSOR ──────────────────────────── */
+    .cursor {
+      position: fixed;
+      width: 10px; height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease;
+      mix-blend-mode: difference;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.18s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s;
+      opacity: 0.5;
+    }
+    body:hover .cursor { opacity: 1; }
+
+    /* ─── GRAIN OVERLAY ──────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9990;
+      pointer-events: none;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
     }
 
-    /* NAV */
+    /* ─── NAV ────────────────────────────────────── */
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(10, 10, 10, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
-      padding: 14px 0;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 52px;
+      mix-blend-mode: difference;
+    }
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--paper);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-mark {
+      width: 18px; height: 18px;
+      border: 1.5px solid var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
     }
 
-    nav .container {
+    /* ─── HERO ───────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 0 72px 52px;
+      position: relative;
+      border-right: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(64px, 8vw, 118px);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      margin-bottom: 0;
+    }
+    .hero h1 .line-gold {
+      color: var(--gold);
+      font-style: italic;
+      display: block;
+    }
+    .hero h1 .line-outline {
+      -webkit-text-stroke: 1px var(--paper);
+      color: transparent;
+      display: block;
+    }
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 52px 72px 52px;
+      gap: 40px;
+    }
+    .hero-sub {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      color: rgba(245,240,232,0.65);
+      line-height: 1.7;
+      max-width: 340px;
+    }
+    .hero-sub em {
+      font-style: normal;
+      color: var(--paper);
+      font-weight: 700;
+    }
+    .hero-note {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--dim);
+      letter-spacing: 0.08em;
+      line-height: 1.6;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .hero-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 18px 36px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      width: fit-content;
+    }
+    .btn-hero:hover {
+      background: var(--paper);
+      transform: translateX(6px);
+    }
+    .btn-hero-arrow {
+      font-size: 1.1rem;
+      transition: transform 0.2s;
+    }
+    .btn-hero:hover .btn-hero-arrow { transform: translateX(4px); }
+    .hero-locations {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+    .hero-vertical-label {
+      position: absolute;
+      right: -1px;
+      bottom: 50%;
+      transform: translateY(50%) rotate(90deg) translateX(50%);
+      transform-origin: right center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* ─── LEARN ──────────────────────────────────── */
+    .learn {
+      border-top: 1px solid var(--border);
+      padding: 120px 52px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+      background: var(--paper);
+      color: var(--ink);
+    }
+    .learn-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      padding-top: 12px;
+    }
+    .learn-content { }
+    .learn h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(42px, 6vw, 80px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 72px;
+    }
+    .learn-items {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+    }
+    .learn-item {
+      padding: 48px 40px;
+      border-right: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .learn-item:last-child { border-right: none; }
+    .learn-item:hover { background: rgba(201,160,48,0.05); }
+    .learn-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 28px;
+      letter-spacing: -0.04em;
+    }
+    .learn-item p {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    /* ─── FOR WHO ────────────────────────────────── */
+    .forwho {
+      border-top: 1px solid var(--border);
+      padding: 100px 52px;
+    }
+    .forwho-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 72px;
+    }
+    .section-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .section-h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(42px, 6vw, 80px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--paper);
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 28px;
+      border: 1px solid var(--border);
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--paper);
+      letter-spacing: 0.08em;
+      transition: all 0.25s;
+    }
+    .tag:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201,160,48,0.04);
+    }
+
+    /* ─── PORTFOLIO / THEY DID IT ────────────────── */
+    .they {
+      border-top: 1px solid var(--border);
+      padding: 100px 52px;
+      background: var(--paper);
+      color: var(--ink);
+    }
+    .they-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 72px;
+    }
+    .they .section-tag { color: var(--gold-dark); }
+    .they-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid rgba(10,8,5,0.15);
+    }
+    .they-card {
+      padding: 40px 36px;
+      border-right: 1px solid rgba(10,8,5,0.15);
+      display: flex;
+      flex-direction: column;
+      transition: background 0.25s;
+      text-decoration: none;
+      position: relative;
+    }
+    .they-card:last-child { border-right: none; }
+    .they-card::after {
+      content: '→';
+      position: absolute;
+      bottom: 36px; right: 32px;
+      color: var(--gold-dark);
+      font-size: 1.1rem;
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: all 0.25s ease;
+    }
+    .they-card:hover { background: rgba(201,160,48,0.06); }
+    .they-card:hover::after { opacity: 1; transform: translateX(0); }
+    .they-idx {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      color: var(--gold-dark);
+      margin-bottom: 24px;
+    }
+    .they-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .they-domain {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--dim);
+      margin-bottom: 0;
+      letter-spacing: 0.05em;
+    }
+    .they-type {
+      margin-top: auto;
+      padding-top: 24px;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(138,107,26,0.6);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ─── DETAILS ────────────────────────────────── */
+    .details {
+      border-top: 1px solid var(--border);
+      padding: 100px 52px;
+    }
+    .details-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 72px;
+    }
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+    }
+    .detail {
+      padding: 56px 48px;
+      border-right: 1px solid var(--border);
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .detail:last-child { border-right: none; }
+    .detail:hover { background: rgba(201,160,48,0.04); }
+    .detail-icon {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .detail-icon::before, .detail-icon::after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--border);
+    }
+    .detail-value {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 900;
+      color: var(--paper);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .detail-sub {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--dim);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── FORM ───────────────────────────────────── */
+    .form-section {
+      border-top: 1px solid var(--border);
+      padding: 120px 52px;
+      background: var(--paper);
+      color: var(--ink);
+    }
+    .form-inner {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .form-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      padding-top: 12px;
+    }
+    .form-header { margin-bottom: 56px; }
+    .form-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(42px, 6vw, 80px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .form-header p {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      color: var(--dim);
+      line-height: 1.7;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid rgba(10,8,5,0.15);
+    }
+    .field {
+      padding: 28px 32px;
+      border-right: 1px solid rgba(10,8,5,0.15);
+      border-bottom: 1px solid rgba(10,8,5,0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .field:nth-child(2n) { border-right: none; }
+    .field:nth-last-child(-n+2) { border-bottom: none; }
+    .field label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+    }
+    .field input,
+    .field textarea,
+    .field select {
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.92rem;
+      color: var(--ink);
+      padding: 0;
+      width: 100%;
+      cursor: text;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: rgba(107,96,85,0.5);
+    }
+    .field select {
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .field textarea {
+      resize: none;
+      height: 80px;
+      line-height: 1.5;
+    }
+    .field-opt label { color: var(--dim); font-size: 0.55rem; }
+    .field-full {
+      grid-column: 1 / -1;
+      border-right: none !important;
+      border-bottom: 1px solid rgba(10,8,5,0.15) !important;
+    }
+    .field-full:last-child { border-bottom: none !important; }
+    .form-submit {
+      padding: 32px 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 18px 36px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .btn-gold:hover {
+      background: var(--ink);
+      color: var(--paper);
+      transform: translateX(6px);
+    }
+    .form-note {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--dim);
+      letter-spacing: 0.08em;
+      line-height: 1.6;
+    }
+    /* Success state */
+    .form-success {
+      display: none;
+      padding: 80px 52px;
+      text-align: center;
+    }
+    .form-success.show { display: block; }
+    .form-fields.hide { display: none; }
+    .success-icon {
+      width: 64px; height: 64px;
+      border: 1.5px solid var(--gold);
+      transform: rotate(45deg);
+      margin: 0 auto 40px;
+    }
+    .success-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .success-note {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      color: var(--dim);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 52px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
-    .nav-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: var(--gold);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-
-    .nav-logo span { color: var(--white); }
-    .nav-logo img { height: 32px; width: auto; vertical-align: middle; }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
+    .footer-brand {
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 24px 80px;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 168, 76, 0.08) 0%, transparent 70%),
-        var(--black);
-      position: relative;
-      overflow: hidden;
+      gap: 12px;
     }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(201, 168, 76, 0.04) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .hero-leaf {
-      font-size: 2.5rem;
-      display: block;
-      margin-bottom: 16px;
-      opacity: 0.9;
-    }
-
-    .hero h1 {
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-    }
-
-    .hero h1 .gold { color: var(--gold); }
-
-    .hero-subtitle {
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-      color: rgba(255,255,255,0.75);
-      font-weight: 300;
-      margin-bottom: 32px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-tag {
-      display: inline-block;
-      background: rgba(201, 168, 76, 0.12);
-      border: 1px solid rgba(201, 168, 76, 0.35);
-      color: var(--gold);
+    .footer-name {
       font-family: 'Syne', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-weight: 800;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      padding: 8px 20px;
-      border-radius: 100px;
-      margin-bottom: 16px;
+      color: var(--paper);
     }
-
-    .hero-location {
-      color: var(--gray);
-      font-size: 0.95rem;
-      margin-bottom: 48px;
-    }
-
-    .hero-location strong { color: var(--white); }
-
-    .btn-primary {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--black);
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.05rem;
-      padding: 16px 40px;
-      border-radius: 8px;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      transition: background 0.2s, transform 0.15s;
-      letter-spacing: 0.01em;
-    }
-
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
-
-    /* DIVIDER */
-    .section-divider {
-      width: 60px;
-      height: 2px;
-      background: var(--gold);
-      margin: 0 auto 16px;
-      border-radius: 2px;
-    }
-
-    /* SECTIONS */
-    section { padding: 100px 0; }
-
-    .section-label {
-      text-align: center;
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
+    .footer-tagline {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 8px;
+      color: var(--dim);
     }
-
-    .section-title {
-      text-align: center;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 60px;
-    }
-
-    /* APRENDE */
-    .aprende { background: var(--gray-dark); }
-
-    .aprende-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .aprende-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(201, 168, 76, 0.12);
-      border-radius: 12px;
-      padding: 36px 28px;
-      text-align: center;
-      transition: border-color 0.2s, background 0.2s;
-    }
-
-    .aprende-card:hover {
-      border-color: rgba(201, 168, 76, 0.4);
-      background: rgba(201, 168, 76, 0.04);
-    }
-
-    .aprende-icon {
-      font-size: 2rem;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .aprende-card h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--white);
-    }
-
-    .aprende-card p {
-      color: rgba(255,255,255,0.6);
-      font-size: 0.92rem;
-    }
-
-    /* PARA QUIEN */
-    .para-quien { background: var(--black); }
-
-    .industrias-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .industria-tag {
-      background: rgba(201, 168, 76, 0.08);
-      border: 1px solid rgba(201, 168, 76, 0.25);
-      color: var(--white);
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 14px 28px;
-      border-radius: 100px;
-      transition: background 0.2s, border-color 0.2s;
-    }
-
-    .industria-tag:hover {
-      background: rgba(201, 168, 76, 0.16);
-      border-color: rgba(201, 168, 76, 0.5);
-    }
-
-    /* CLIENTES */
-    .clientes { background: var(--gray-dark); }
-
-    .clientes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .cliente-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: border-color 0.2s, transform 0.2s;
-      text-decoration: none;
-      display: block;
-    }
-
-    .cliente-card:hover {
-      border-color: rgba(201, 168, 76, 0.4);
-      transform: translateY(-3px);
-    }
-
-    .cliente-preview {
-      width: 100%;
-      height: 160px;
-      background: #111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      overflow: hidden;
-    }
-
-    .cliente-preview img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.85;
-    }
-
-    .cliente-preview .placeholder-site {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
-      color: var(--gray);
-      text-align: center;
-      padding: 20px;
-    }
-
-    .cliente-info { padding: 20px 24px; }
-
-    .cliente-name {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-
-    .cliente-url {
-      color: var(--gold);
-      font-size: 0.82rem;
-      opacity: 0.8;
-    }
-
-    .cliente-tagline {
-      color: rgba(255,255,255,0.5);
-      font-size: 0.82rem;
-      margin-top: 6px;
-    }
-
-    /* FORM */
-    .form-section { background: var(--black); }
-
-    .form-wrapper {
-      max-width: 560px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.025);
-      border: 1px solid rgba(201, 168, 76, 0.2);
-      border-radius: 16px;
-      padding: 48px 40px;
-    }
-
-    .form-header { text-align: center; margin-bottom: 36px; }
-
-    .form-header h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-
-    .form-price {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--gold);
-    }
-
-    .form-price span {
-      font-size: 1rem;
-      font-weight: 400;
-      color: rgba(255,255,255,0.5);
-    }
-
-    .form-group { margin-bottom: 20px; }
-
-    .form-group label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 6px;
-      letter-spacing: 0.01em;
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 8px;
-      padding: 12px 16px;
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      transition: border-color 0.2s;
-      outline: none;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: rgba(255,255,255,0.25);
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: rgba(201, 168, 76, 0.5);
-    }
-
-    .form-group textarea { resize: vertical; min-height: 80px; }
-
-    .form-group select option { background: #1a1a1a; }
-
-    .btn-submit {
-      width: 100%;
-      background: var(--gold);
-      color: var(--black);
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.05rem;
-      padding: 16px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-      margin-top: 8px;
-      letter-spacing: 0.01em;
-    }
-
-    .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
-
-    .form-note {
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--gray);
-      margin-top: 16px;
-      line-height: 1.5;
-    }
-
-    /* SUCCESS STATE */
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    .form-success.show { display: block; }
-    .form-content.hidden { display: none; }
-
-    .success-icon {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      display: block;
-    }
-
-    .form-success h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 12px;
-    }
-
-    .form-success p {
-      color: rgba(255,255,255,0.6);
-      font-size: 0.95rem;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #050505;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 40px 0;
-      text-align: center;
-    }
-
-    footer p {
-      color: rgba(255,255,255,0.35);
-      font-size: 0.88rem;
-    }
-
     footer a {
-      color: var(--gold);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dim);
       text-decoration: none;
+      transition: color 0.2s;
     }
+    footer a:hover { color: var(--paper); }
 
-    footer a:hover { text-decoration: underline; }
+    /* ─── ANIMATIONS ─────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-left > *, .hero-right > * {
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+    }
+    .hero-eyebrow    { animation-delay: 0.1s; }
+    .hero h1         { animation-delay: 0.25s; }
+    .hero-sub        { animation-delay: 0.15s; }
+    .hero-cta-wrap   { animation-delay: 0.3s; }
+    .hero-note       { animation-delay: 0.4s; }
+    .hero-locations  { animation-delay: 0.45s; }
 
-    /* RESPONSIVE */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ─── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 160px 32px 60px; border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-right { padding: 60px 32px 80px; }
+      .hero-vertical-label { display: none; }
+      .learn { grid-template-columns: 1fr; gap: 32px; padding: 80px 32px; }
+      .learn-items { grid-template-columns: 1fr; }
+      .learn-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .learn-item:last-child { border-bottom: none; }
+      .forwho { padding: 80px 32px; }
+      .forwho-header { flex-direction: column; gap: 16px; }
+      .they { padding: 80px 32px; }
+      .they-header { flex-direction: column; gap: 16px; }
+      .they-grid { grid-template-columns: 1fr; }
+      .they-card { border-right: none !important; border-bottom: 1px solid rgba(10,8,5,0.15); }
+      .they-card:last-child { border-bottom: none; }
+      .details { padding: 80px 32px; }
+      .details-header { flex-direction: column; gap: 16px; }
+      .details-grid { grid-template-columns: 1fr; }
+      .detail { border-right: none; border-bottom: 1px solid var(--border); }
+      .detail:last-child { border-bottom: none; }
+      .form-section { padding: 80px 32px; }
+      .form-inner { grid-template-columns: 1fr; gap: 32px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field { border-right: none !important; }
+      .field:nth-last-child(-n+2) { border-bottom: 1px solid rgba(10,8,5,0.15); }
+      .field:last-child { border-bottom: none !important; }
+      .field-full { grid-column: 1; }
+      nav { padding: 20px 32px; }
+      footer { padding: 32px; flex-direction: column; gap: 20px; text-align: center; }
+    }
     @media (max-width: 640px) {
-      section { padding: 72px 0; }
-      .form-wrapper { padding: 32px 20px; }
-      .hero { padding-top: 100px; }
-      .clientes-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 400px) {
-      .clientes-grid { grid-template-columns: 1fr; }
+      .form-header h2 { font-size: 2.5rem; }
+      .learn h2 { font-size: 2.5rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
   <!-- NAV -->
   <nav>
-    <div class="container">
-      <a href="https://eternowebstudio.com" class="nav-logo"><img src="https://eternowebstudio.com/img/eterno-logo.png" alt="Eterno" height="36"></a>
-    </div>
+    <a href="https://eternowebstudio.com" class="logo">
+      <div class="logo-mark"></div>
+      Eterno
+    </a>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="container">
-      <span class="hero-leaf">🌿</span>
-      <div class="hero-tag">Workshop Presencial</div>
-      <h1>IA Sin Rodeos<span class="gold"> 🌿</span></h1>
-      <p class="hero-subtitle">Tu negocio en línea con inteligencia artificial</p>
-      <p class="hero-location">
-        📅 <strong>25 de abril de 2026</strong> &nbsp;·&nbsp; 📍 <strong>Roma Norte, CDMX</strong> — Por confirmar
+    <div class="hero-left">
+      <p class="hero-eyebrow">Workshop Presencial &nbsp;·&nbsp; CDMX</p>
+      <h1>
+        IA<br>
+        <span class="line-gold">Sin</span>
+        <span class="line-outline">Rodeos.</span>
+      </h1>
+      <div class="hero-vertical-label">Eterno Web Studio — Workshop 2026</div>
+    </div>
+    <div class="hero-right">
+      <p class="hero-sub">
+        Un día inteiro pra aprender a usar la <em>inteligencia artificial</em> en tu negocio — sin tecnicismos, sin rodeos.
       </p>
-      <a href="#reserva" class="btn-primary">Quiero mi lugar →</a>
+      <div class="hero-cta-wrap">
+        <a href="#reservar" class="btn-hero">
+          Reservar mi lugar
+          <span class="btn-hero-arrow">→</span>
+        </a>
+        <p class="hero-locations">25 de Abril 2026 &nbsp;·&nbsp; Roma Norte, CDMX</p>
+      </div>
+      <p class="hero-note">
+        Workshop presencial de 9am a 5pm.<br>
+        Coffee included. Laptop required.
+      </p>
     </div>
   </section>
 
-  <!-- APRENDE -->
-  <section class="aprende">
-    <div class="container">
-      <p class="section-label">Lo que aprenderás</p>
-      <h2 class="section-title">¿Qué vas a aprender?</h2>
-      <div class="aprende-grid">
-        <div class="aprende-card">
-          <span class="aprende-icon">🌐</span>
-          <h3>Sitio web profesional</h3>
-          <p>Cómo tener un sitio web profesional sin saber programar — paso a paso y sin tecnicismos.</p>
+  <!-- WHAT YOU LEARN -->
+  <section class="learn" id="aprender">
+    <p class="learn-tag">Lo que aprendes</p>
+    <div class="learn-content">
+      <h2 class="reveal">¿Qué vas a<br>aprender?</h2>
+      <div class="learn-items">
+        <div class="learn-item reveal">
+          <div class="learn-num">01</div>
+          <p>Cómo tener un sitio web profesional sin saber programar</p>
         </div>
-        <div class="aprende-card">
-          <span class="aprende-icon">🤖</span>
-          <h3>Asistente de IA 24/7</h3>
-          <p>Cómo un asistente de IA atiende a tus clientes a cualquier hora, los cualifica y agenda citas solo.</p>
+        <div class="learn-item reveal reveal-delay-1">
+          <div class="learn-num">02</div>
+          <p>Cómo un asistente de IA atiende a tus clientes 24/7</p>
         </div>
-        <div class="aprende-card">
-          <span class="aprende-icon">🔍</span>
-          <h3>Aparece en Google</h3>
-          <p>Cómo aparecer en Google cuando alguien busca tu negocio — SEO local sin misterio.</p>
+        <div class="learn-item reveal reveal-delay-2">
+          <div class="learn-num">03</div>
+          <p>Cómo aparecer en Google cuando alguien busca tu negocio</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PARA QUIEN -->
-  <section class="para-quien">
-    <div class="container">
-      <p class="section-label">Para quién es</p>
-      <h2 class="section-title">¿Para quién es este workshop?</h2>
-      <div class="industrias-grid">
-        <div class="industria-tag">🖋️ Tatuadores y estudios</div>
-        <div class="industria-tag">💈 Barberos y barberías</div>
-        <div class="industria-tag">💅 Salones de belleza y spas</div>
-        <div class="industria-tag">🏥 Clínicas y consultorios</div>
-        <div class="industria-tag">🍽️ Restaurantes y comercios</div>
+  <!-- FOR WHO -->
+  <section class="forwho" id="para-quien">
+    <div class="forwho-header">
+      <p class="section-tag reveal">¿Para quién es?</p>
+      <h2 class="section-h2 reveal reveal-delay-1">Para ti, si...</h2>
+    </div>
+    <div class="tags">
+      <span class="tag reveal">Tatuadores</span>
+      <span class="tag reveal reveal-delay-1">Barberías</span>
+      <span class="tag reveal reveal-delay-2">Salones de belleza</span>
+      <span class="tag reveal">Clínicas</span>
+      <span class="tag reveal reveal-delay-1">Restaurantes</span>
+      <span class="tag reveal reveal-delay-2">Comercios</span>
+    </div>
+  </section>
+
+  <!-- THEY ALREADY DID IT -->
+  <section class="they" id="trabajo">
+    <div class="they-header">
+      <p class="section-tag reveal">Nuestro Trabajo</p>
+      <h2 class="section-h2 reveal reveal-delay-1" style="color: var(--ink);">Ellos ya<br>lo hicieron</h2>
+    </div>
+    <div class="they-grid">
+      <a href="https://rubencharre.com" target="_blank" class="they-card reveal">
+        <p class="they-idx">001</p>
+        <h3 class="they-name">Ruben Charre</h3>
+        <p class="they-domain">rubencharre.com</p>
+        <p class="they-type">Tattoo Artist</p>
+      </a>
+      <a href="https://ericharetattoo.com" target="_blank" class="they-card reveal reveal-delay-1">
+        <p class="they-idx">002</p>
+        <h3 class="they-name">Eric Hare</h3>
+        <p class="they-domain">ericharetattoo.com</p>
+        <p class="they-type">Tattoo Artist</p>
+      </a>
+      <a href="https://tabstattoo.com" target="_blank" class="they-card reveal reveal-delay-2">
+        <p class="they-idx">003</p>
+        <h3 class="they-name">Tabs Vacilio</h3>
+        <p class="they-domain">tabstattoo.com</p>
+        <p class="they-type">Tattoo Artist</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="details" id="detalles">
+    <div class="details-header">
+      <p class="section-tag reveal">Los Detalles</p>
+      <h2 class="section-h2 reveal reveal-delay-1">Todo lo que<br>necesitas saber</h2>
+    </div>
+    <div class="details-grid">
+      <div class="detail reveal">
+        <p class="detail-icon">Fecha</p>
+        <p class="detail-value">25 de Abril<br>2026</p>
+        <p class="detail-sub">Sábado · 9am — 5pm</p>
+      </div>
+      <div class="detail reveal reveal-delay-1">
+        <p class="detail-icon">Ubicación</p>
+        <p class="detail-value">Roma Norte<br>CDMX</p>
+        <p class="detail-sub">Dirección exacta al confirmar</p>
+      </div>
+      <div class="detail reveal reveal-delay-2">
+        <p class="detail-icon">Precio</p>
+        <p class="detail-value">$899<br>MXN</p>
+        <p class="detail-sub">Pago por transferencia</p>
       </div>
     </div>
   </section>
 
-  <!-- CLIENTES -->
-  <section class="clientes">
-    <div class="container">
-      <p class="section-label">Resultados reales</p>
-      <h2 class="section-title">Ellos ya lo hicieron</h2>
-      <div class="clientes-grid">
-        <a href="https://rubencharre.com" target="_blank" rel="noopener" class="cliente-card">
-          <div class="cliente-preview">
-            <div class="placeholder-site">
-              <div style="font-size:1.5rem;margin-bottom:6px;">🖋️</div>
-              rubencharre.com
-            </div>
-          </div>
-          <div class="cliente-info">
-            <div class="cliente-name">Ruben Charre</div>
-            <div class="cliente-url">rubencharre.com ↗</div>
-            <div class="cliente-tagline">Tatuador — Ciudad de México</div>
-          </div>
-        </a>
-        <a href="https://ericharetattoo.com" target="_blank" rel="noopener" class="cliente-card">
-          <div class="cliente-preview">
-            <div class="placeholder-site">
-              <div style="font-size:1.5rem;margin-bottom:6px;">🎨</div>
-              ericharetattoo.com
-            </div>
-          </div>
-          <div class="cliente-info">
-            <div class="cliente-name">Eric Hare</div>
-            <div class="cliente-url">ericharetattoo.com ↗</div>
-            <div class="cliente-tagline">Tatuador — Houston, TX</div>
-          </div>
-        </a>
-        <a href="https://tabstattoo.com" target="_blank" rel="noopener" class="cliente-card">
-          <div class="cliente-preview">
-            <div class="placeholder-site">
-              <div style="font-size:1.5rem;margin-bottom:6px;">🖋️</div>
-              tabstattoo.com
-            </div>
-          </div>
-          <div class="cliente-info">
-            <div class="cliente-name">Tabs Vacilio</div>
-            <div class="cliente-url">tabstattoo.com ↗</div>
-            <div class="cliente-tagline">Tatuador — México</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
+  <!-- RESERVATION FORM -->
+  <section class="form-section" id="reservar">
+    <div class="form-inner">
+      <p class="form-tag">Reserva tu lugar</p>
+      <div>
+        <div class="form-header">
+          <h2 class="reveal">Reserva tu<br>lugar</h2>
+          <p class="reveal reveal-delay-1">Completa tus datos y te contactamos por WhatsApp en las próximas 24 horas.</p>
+        </div>
 
-  <!-- FORMULARIO -->
-  <section class="form-section" id="reserva">
-    <div class="container">
-      <p class="section-label">Inscríbete</p>
-      <div class="form-wrapper">
-        <div class="form-content" id="formContent">
-          <div class="form-header">
-            <h2>Reserva tu lugar</h2>
-            <div class="form-price">$899 MXN <span>(por confirmar tu lugar)</span></div>
-          </div>
-
-          <form id="reservationForm" novalidate>
-            <div class="form-group">
-              <label for="nombre">Nombre *</label>
-              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+        <div class="form-fields" id="formFields">
+          <div class="form-grid">
+            <div class="field">
+              <label for="nombre">Nombre completo *</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required/>
             </div>
-            <div class="form-group">
+            <div class="field">
               <label for="whatsapp">WhatsApp *</label>
-              <input type="tel" id="whatsapp" name="whatsapp" placeholder="55 1234 5678" required>
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="+52 55 0000 0000" required/>
             </div>
-            <div class="form-group">
+            <div class="field">
               <label for="email">Email *</label>
-              <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+              <input type="email" id="email" name="email" placeholder="tu@email.com" required/>
             </div>
-            <div class="form-group">
+            <div class="field field-full">
               <label for="dedicas">¿A qué te dedicas? *</label>
-              <input type="text" id="dedicas" name="dedicas" placeholder="Ej: Soy tatuador en CDMX" required>
+              <input type="text" id="dedicas" name="dedicas" placeholder="Tatuador, Barbería, Restaurante..." required/>
             </div>
-            <div class="form-group">
-              <label for="referido">¿Cómo te enteraste del evento? <span style="opacity:0.5">(opcional)</span></label>
-              <input type="text" id="referido" name="referido" placeholder="Ej: Instagram, WhatsApp, un amigo..."">
+            <div class="field field-full field-opt">
+              <label for="enteraste">¿Cómo te enteraste?</label>
+              <input type="text" id="enteraste" name="enteraste" placeholder="Instagram, amigo, Google..."/>
             </div>
-            <button type="submit" class="btn-submit">Reservar mi lugar</button>
-          </form>
-
-          <p class="form-note">
-            Después de registrarte, te llegará un mensaje por WhatsApp<br>para completar tu pago.
-          </p>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-gold" id="submitBtn">
+              Reservar mi lugar
+              <span>→</span>
+            </button>
+            <p class="form-note">Te contactamos por WhatsApp para confirmar tu lugar.</p>
+          </div>
         </div>
 
         <div class="form-success" id="formSuccess">
-          <span class="success-icon">🎉</span>
-          <h3>¡Listo!</h3>
-          <p>Te contactamos por WhatsApp para confirmar tu lugar.</p>
+          <div class="success-icon"></div>
+          <h3 class="success-title">¡Listo!</h3>
+          <p class="success-note">Te contactamos por WhatsApp en las próximas 24 horas.</p>
         </div>
       </div>
     </div>
@@ -670,39 +912,64 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="container">
-      <p>
-        Powered by <a href="https://eternowebstudio.com" target="_blank">Eterno Web Studio</a> 🌿
-      </p>
+    <div class="footer-brand">
+      <a href="https://eternowebstudio.com" class="logo" style="text-decoration:none;">
+        <div class="logo-mark"></div>
+        <span class="footer-name">Eterno</span>
+      </a>
     </div>
+    <p class="footer-tagline">Tu Legado, Hecho Eterno</p>
+    <a href="https://eternowebstudio.com" target="_blank">eternowebstudio.com →</a>
   </footer>
 
   <script>
-    document.getElementById('reservationForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      var required = ['nombre', 'whatsapp', 'email', 'dedicas'];
-      var valid = true;
-      required.forEach(function(id) {
-        var el = document.getElementById(id);
-        if (!el.value.trim()) {
-          el.style.borderColor = 'rgba(255, 80, 80, 0.6)';
-          valid = false;
-        } else {
-          el.style.borderColor = '';
-        }
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    function animateCursor() {
+      cursor.style.left = mx + 'px';
+      cursor.style.top  = my + 'px';
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+    document.querySelectorAll('a, button, input, textarea, select').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width = '20px'; cursor.style.height = '20px';
+        ring.style.width = '56px'; ring.style.height = '56px'; ring.style.opacity = '0.8';
       });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width = '10px'; cursor.style.height = '10px';
+        ring.style.width = '36px'; ring.style.height = '36px'; ring.style.opacity = '0.5';
+      });
+    });
 
+    // Scroll reveals
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Form submission — show success state
+    document.getElementById('submitBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      const fields = document.querySelectorAll('#formFields input[required]');
+      let valid = true;
+      fields.forEach(f => {
+        if (!f.value.trim()) { valid = false; f.style.background = 'rgba(139,58,26,0.1)'; }
+        else f.style.background = '';
+      });
       if (!valid) return;
-
-      // Show success
-      document.getElementById('formContent').classList.add('hidden');
+      document.getElementById('formFields').classList.add('hide');
       document.getElementById('formSuccess').classList.add('show');
-
-      // Scroll to success message
-      document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   </script>
-
 </body>
 </html>

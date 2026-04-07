@@ -870,41 +870,25 @@
         </div>
 
         <div class="form-fields" id="formFields">
-          <div class="form-grid">
-            <div class="field">
-              <label for="nombre">Nombre completo *</label>
-              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required/>
-            </div>
-            <div class="field">
-              <label for="whatsapp">WhatsApp *</label>
-              <input type="tel" id="whatsapp" name="whatsapp" placeholder="+52 55 0000 0000" required/>
-            </div>
-            <div class="field">
-              <label for="email">Email *</label>
-              <input type="email" id="email" name="email" placeholder="tu@email.com" required/>
-            </div>
-            <div class="field field-full">
-              <label for="dedicas">¿A qué te dedicas? *</label>
-              <input type="text" id="dedicas" name="dedicas" placeholder="Tatuador, Barbería, Restaurante..." required/>
-            </div>
-            <div class="field field-full field-opt">
-              <label for="enteraste">¿Cómo te enteraste?</label>
-              <input type="text" id="enteraste" name="enteraste" placeholder="Instagram, amigo, Google..."/>
+          <div style="display:grid;gap:16px;max-width:480px;">
+            <p style="font-family:'Syne',sans-serif;font-size:1rem;color:var(--dim);line-height:1.7;">
+              <span style="font-weight:700;color:var(--ink);font-size:2.2rem;display:block;font-family:'Playfair Display',serif;">$699 MXN</span>
+              <span style="text-decoration:line-through;font-size:0.88rem;color:var(--gold);">Precio regular: $899 MXN</span>
+            </p>
+            <div style="display:flex;flex-direction:column;gap:8px;padding:20px 0;border-top:1px solid rgba(10,8,5,0.12);font-family:'Syne',sans-serif;font-size:0.88rem;color:var(--dim);">
+              <span>✅ Workshop presencial 9am – 5pm</span>
+              <span>✅ Roma Norte, CDMX · 25 Abril 2026</span>
+              <span>✅ Coffee included</span>
+              <span>✅ 25 de Abril 2026</span>
             </div>
           </div>
-          <div class="form-submit">
-            <button type="submit" class="btn-gold" id="submitBtn">
-              Reservar mi lugar
+          <div class="form-submit" style="margin-top:32px;">
+            <a href="https://buy.stripe.com/4gMfZhee2oBfSwfRx3Je0h" target="_blank" class="btn-gold" style="display:inline-flex;text-decoration:none;">
+              Reservar y Pagar — $699 MXN
               <span>→</span>
-            </button>
-            <p class="form-note">Te contactamos por WhatsApp para confirmar tu lugar.</p>
+            </a>
+            <p class="form-note">Pagando en Stripe aseguras tu lugar al instante. Te enviamos los detalles por WhatsApp.</p>
           </div>
-        </div>
-
-        <div class="form-success" id="formSuccess">
-          <div class="success-icon"></div>
-          <h3 class="success-title">¡Listo!</h3>
-          <p class="success-note">Te contactamos por WhatsApp en las próximas 24 horas.</p>
         </div>
       </div>
     </div>
@@ -957,19 +941,7 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    // Form submission — show success state
-    document.getElementById('submitBtn').addEventListener('click', function(e) {
-      e.preventDefault();
-      const fields = document.querySelectorAll('#formFields input[required]');
-      let valid = true;
-      fields.forEach(f => {
-        if (!f.value.trim()) { valid = false; f.style.background = 'rgba(139,58,26,0.1)'; }
-        else f.style.background = '';
-      });
-      if (!valid) return;
-      document.getElementById('formFields').classList.add('hide');
-      document.getElementById('formSuccess').classList.add('show');
-    });
+    // Stripe checkout: users pay and reserve instantly
   </script>
 </body>
 </html>

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paula Sierra — Marketing & Creative · Miami</title>
+    <meta name="description" content="Paula Sierra is a Miami-based marketing and creative professional specializing in lifestyle branding, content strategy, and visual storytelling.">
+    <meta name="author" content="Paula Sierra">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Paula Sierra — Marketing & Creative · Miami">
+    <meta property="og:description" content="Miami-based marketing and creative professional. Lifestyle branding, content strategy, and visual storytelling.">
+    <meta property="og:image" content="https://scontent-hou1-1.cdninstagram.com/v/t51.82787-15/641089972_18560517604020317_1569685915709544801_n.jpg">
+    <meta property="og:url" content="https://bayouwebstudio.github.io/paulasierra27/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Paula Sierra — Marketing & Creative · Miami">
+    <meta name="twitter:description" content="Miami-based marketing and creative professional.">
+    <meta name="twitter:image" content="https://scontent-hou1-1.cdninstagram.com/v/t51.82787-15/641089972_18560517604020317_1569685915709544801_n.jpg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --cream: #FAF7F2;
+            --sand: #EDE8DF;
+            --warm: #C4A882;
+            --terracotta: #B5704F;
+            --charcoal: #2A2520;
+            --smoke: #7A746E;
+            --white: #FFFFFF;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--cream);
+            color: var(--charcoal);
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection { background: var(--warm); color: var(--white); }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.4s ease, padding 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(250, 247, 242, 0.92);
+            backdrop-filter: blur(12px);
+            padding: 1rem 3rem;
+            border-bottom: 1px solid rgba(196, 168, 130, 0.2);
+        }
+
+        .nav-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            color: var(--charcoal);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--smoke);
+            transition: color 0.3s;
+            font-weight: 400;
+        }
+
+        .nav-links a:hover { color: var(--charcoal); }
+
+        .nav-toggle { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .nav-toggle span {
+            width: 22px; height: 1.5px;
+            background: var(--charcoal);
+            transition: all 0.3s;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(160deg, var(--cream) 0%, var(--sand) 100%);
+            z-index: -1;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--warm);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 9vw, 8rem);
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            line-height: 1.0;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .hero-name em {
+            font-style: italic;
+            color: var(--terracotta);
+        }
+
+        .hero-tagline {
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--smoke);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .hero-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--warm);
+            margin: 0 auto 3rem;
+        }
+
+        .hero-followers {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: var(--smoke);
+            font-style: italic;
+        }
+
+        .hero-followers span {
+            font-weight: 500;
+            color: var(--charcoal);
+            font-style: normal;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--smoke);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--warm), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.2); }
+        }
+
+        /* ─── GRID GALLERY ─── */
+        .gallery-section {
+            padding: 5rem 3rem 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--warm);
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            text-align: center;
+            color: var(--charcoal);
+            margin-bottom: 3.5rem;
+        }
+
+        .gallery-grid {
+            columns: 3;
+            column-gap: 1rem;
+        }
+
+        .gallery-grid .item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-grid .item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;
+            filter: saturate(0.9);
+        }
+
+        .gallery-grid .item:hover img {
+            transform: scale(1.04);
+            filter: saturate(1.1);
+        }
+
+        .gallery-grid .item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(42,37,32,0.3), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .gallery-grid .item:hover::after { opacity: 1; }
+
+        /* ─── LIGHTBOX ─── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(42, 37, 32, 0.95);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .lightbox.active { display: flex; }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            box-shadow: 0 20px 80px rgba(0,0,0,0.6);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2.5rem;
+            font-size: 2rem;
+            color: rgba(255,255,255,0.7);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover { color: white; }
+
+        /* ─── ABOUT ─── */
+        .about-section {
+            padding: 6rem 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-section .section-label { margin-bottom: 1rem; }
+
+        .about-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--charcoal);
+        }
+
+        .about-text em { font-style: italic; color: var(--terracotta); }
+
+        .about-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3.5rem;
+            padding-top: 3.5rem;
+            border-top: 1px solid var(--sand);
+        }
+
+        .stat { text-align: center; }
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--charcoal);
+        }
+        .stat-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--smoke);
+            margin-top: 0.25rem;
+        }
+
+        /* ─── INSTAGRAM CTA ─── */
+        .cta-section {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: var(--charcoal);
+            color: var(--cream);
+        }
+
+        .cta-section .section-label { color: var(--warm); }
+
+        .cta-section .section-title {
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-handle {
+            display: inline-block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--warm);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+
+        .cta-handle:hover { color: var(--terracotta); }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 0.9rem 2.8rem;
+            border: 1px solid var(--warm);
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: var(--warm);
+            color: var(--charcoal);
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            padding: 2.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--cream);
+            border-top: 1px solid var(--sand);
+        }
+
+        footer p {
+            font-size: 0.7rem;
+            color: var(--smoke);
+            letter-spacing: 0.08em;
+        }
+
+        footer a {
+            color: var(--warm);
+            text-decoration: none;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            nav { padding: 1.2rem 1.5rem; }
+            nav.scrolled { padding: 0.9rem 1.5rem; }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: rgba(250,247,242,0.97);
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+                padding: 2rem;
+                border-bottom: 1px solid var(--sand);
+            }
+
+            .nav-links.open { display: flex; }
+            .nav-toggle { display: flex; }
+
+            .gallery-grid { columns: 2; column-gap: 0.6rem; }
+            .gallery-grid .item { margin-bottom: 0.6rem; }
+            .gallery-section { padding: 3rem 1rem 4rem; }
+
+            .hero { padding: 7rem 1.5rem 3rem; }
+            .about-section { padding: 4rem 1.5rem; }
+            .about-stats { gap: 2rem; }
+
+            footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 2rem 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid { columns: 1; }
+            .about-stats { flex-direction: column; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav id="navbar">
+        <div class="nav-brand">Paula Sierra</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="https://www.instagram.com/paulasierra27/" target="_blank">Instagram</a></li>
+        </ul>
+        <div class="nav-toggle" id="nav-toggle" onclick="toggleNav()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-eyebrow">Miami, Florida</div>
+        <h1 class="hero-name">Paula <em>Sierra</em></h1>
+        <div class="hero-divider"></div>
+        <p class="hero-tagline">Marketing &amp; Creative · Miami</p>
+        <p class="hero-followers">
+            <span>15,988</span> followers on Instagram
+        </p>
+        <div class="scroll-hint">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery-section" id="portfolio">
+        <div class="section-label">Portfolio</div>
+        <h2 class="section-title">Selected Work</h2>
+        <div class="gallery-grid">
+            <div class="item" onclick="openLightbox(this)">
+                <img src="https://scontent-hou1-1.cdninstagram.com/v/t51.82787-15/641089972_18560517604020317_1569685915709544801_n.jpg" alt="Paula Sierra portfolio" loading="lazy">
+            </div>
+            <div class="item" onclick="openLightbox(this)">
+                <img src="https://scontent-hou1-1.cdninstagram.com/v/t51.82787-15/610386005_18544318957020317_1533553295434550253_n.jpg" alt="Paula Sierra portfolio" loading="lazy">
+            </div>
+            <div class="item" onclick="openLightbox(this)">
+                <img src="https://scontent-hou1-1.cdninstagram.com/v/t51.82787-15/561846622_18527933356020317_6657919819408527582_n.jpg" alt="Paula Sierra portfolio" loading="lazy">
+            </div>
+            <div class="item" onclick="openLightbox(this)">
+                <img src="https://scontent-hou1-1.cdninstagram.com/v/t51.2885-15/494665101_18496857601020317_5723721719619642032_n.jpg" alt="Paula Sierra portfolio" loading="lazy">
+            </div>
+            <div class="item" onclick="openLightbox(this)">
+                <img src="https://scontent-hou1-1.cdninstagram.com/v/t51.2885-15/479966450_18482712388020317_6245601454588796935_n.jpg" alt="Paula Sierra portfolio" loading="lazy">
+            </div>
+            <div class="item" onclick="openLightbox(this)">
+                <img src="https://scontent-hou1-1.cdninstagram.com/v/t51.82787-15/660730232_18147841048477308_8600574475228883032_n.jpg" alt="Paula Sierra portfolio" loading="lazy">
+            </div>
+            <div class="item" onclick="openLightbox(this)">
+                <img src="https://scontent-hou1-1.cdninstagram.com/v/t51.71878-15/506318277_693035823630825_3800633187305580916_n.jpg" alt="Paula Sierra portfolio" loading="lazy">
+            </div>
+            <div class="item" onclick="openLightbox(this)">
+                <img src="https://scontent-hou1-1.cdninstagram.com/v/t51.82787-15/653793503_18043457924568629_8779545201148785710_n.jpg" alt="Paula Sierra portfolio" loading="lazy">
+            </div>
+            <div class="item" onclick="openLightbox(this)">
+                <img src="https://scontent-hou1-1.cdninstagram.com/v/t51.71878-15/503221745_560363426896586_3857128448232848276_n.jpg" alt="Paula Sierra portfolio" loading="lazy">
+            </div>
+            <div class="item" onclick="openLightbox(this)">
+                <img src="https://scontent-hou1-1.cdninstagram.com/v/t51.82787-15/656366218_18163385455418674_1334358873305550518_n.jpg" alt="Paula Sierra portfolio" loading="lazy">
+            </div>
+            <div class="item" onclick="openLightbox(this)">
+                <img src="https://scontent-hou1-1.cdninstagram.com/v/t39.30808-6/471663353_18478798651013262_6325045129882428775_n.jpg" alt="Paula Sierra portfolio" loading="lazy">
+            </div>
+            <div class="item" onclick="openLightbox(this)">
+                <img src="https://scontent-hou1-1.cdninstagram.com/v/t51.82787-15/655219277_18096820636998857_7302237318296866719_n.jpg" alt="Paula Sierra portfolio" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about-section" id="about">
+        <div class="section-label">About</div>
+        <p class="about-text">
+            Based in <em>Miami</em>, I work with brands and creatives to build visual identities
+            that feel as good as they look. Specializing in <em>lifestyle marketing</em>,
+            content strategy, and <em>editorial storytelling</em> — I help people and
+            businesses connect with their audience through authentic, intentional creative work.
+        </p>
+        <div class="about-stats">
+            <div class="stat">
+                <div class="stat-number">16K+</div>
+                <div class="stat-label">Followers</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">Miami</div>
+                <div class="stat-label">Based</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">Marketing</div>
+                <div class="stat-label">Focus</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM CTA -->
+    <section class="cta-section">
+        <div class="section-label">Follow Along</div>
+        <h2 class="section-title">See More on Instagram</h2>
+        <a href="https://www.instagram.com/paulasierra27/" target="_blank" class="cta-handle">@paulasierra27</a>
+        <br>
+        <a href="https://www.instagram.com/paulasierra27/" target="_blank" class="cta-btn">Open Instagram</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Paula Sierra. All rights reserved.</p>
+        <p>Site by <a href="https://bayouwebstudio.com" target="_blank">Bayou Web Studio</a></p>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img src="" alt="Full size" id="lightbox-img">
+    </div>
+
+    <script>
+        // Nav scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // Mobile nav toggle
+        function toggleNav() {
+            document.getElementById('nav-links').classList.toggle('open');
+        }
+
+        // Close nav on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-links').classList.remove('open');
+            });
+        });
+
+        // Lightbox
+        function openLightbox(el) {
+            const img = el.querySelector('img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close lightbox on Escape
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

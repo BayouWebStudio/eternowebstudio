@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Eterno Web Studio | Tattoo Artist Website Examples</title>
+<meta name="description" content="See 17 live tattoo artist websites built by Eterno Web Studio. Custom designs from Instagram — no templates. View our portfolio of client sites.">
+<meta property="og:title" content="Portfolio — Eterno Web Studio | Tattoo Artist Website Examples">
+<meta property="og:description" content="See 17 live tattoo artist websites built by Eterno Web Studio. Custom designs from Instagram — no templates. View our portfolio of client sites.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://eternowebstudio.com/portfolio">
+<meta property="og:site_name" content="Eterno Web Studio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portfolio — Eterno Web Studio | Tattoo Artist Website Examples">
+<meta name="twitter:description" content="See 17 live tattoo artist websites built by Eterno Web Studio. Custom designs from Instagram — no templates. View our portfolio of client sites.">
+<link rel="canonical" href="https://eternowebstudio.com/portfolio">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #0a0805;
+    --paper: #f5f0e8;
+    --gold: #c9a030;
+    --gold-dark: #8a6b1a;
+    --rust: #8b3a1a;
+    --cream: #e8e0ce;
+    --dim: #6b6055;
+    --border: rgba(201,160,48,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Syne', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    cursor: none;
+    overflow-x: hidden;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+
+  /* Custom cursor */
+  .cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10001;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, border-color 0.3s;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(10,8,5,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.35rem;
+    color: var(--paper);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .nav-logo .diamond {
+    width: 10px;
+    height: 10px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--gold);
+  }
+  .nav-links .cta {
+    background: var(--gold);
+    color: var(--ink);
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    transition: background 0.25s;
+  }
+  .nav-links .cta:hover {
+    background: var(--gold-dark);
+    color: var(--paper);
+  }
+
+  /* Mobile nav toggle */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: none;
+    padding: 4px;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--paper);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  /* Section tags */
+  .section-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  /* Section headings */
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4vw, 56px);
+    line-height: 1.15;
+    color: var(--paper);
+  }
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hero */
+  .hero {
+    padding: 10rem 3rem 4rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .hero .section-heading {
+    margin-bottom: 1.25rem;
+  }
+  .hero p {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    color: var(--cream);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 3rem;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--dim);
+  }
+  .stats-bar span {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* Portfolio grid */
+  .portfolio {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 5rem 3rem;
+  }
+  .portfolio-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .card {
+    display: block;
+    text-decoration: none;
+    color: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: rgba(245,240,232,0.02);
+    transition: background 0.35s, transform 0.35s;
+    position: relative;
+  }
+  .card:hover {
+    background: rgba(201,160,48,0.06);
+    transform: translateY(-4px);
+  }
+  .card-img-wrap {
+    overflow: hidden;
+    position: relative;
+  }
+  .card-img-wrap img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(30%);
+    transition: filter 0.4s, transform 0.4s;
+  }
+  .card:hover .card-img-wrap img {
+    filter: grayscale(0%);
+    transform: scale(1.03);
+  }
+  .card-body {
+    padding: 1.25rem 1.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    position: relative;
+  }
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .card-domain {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--dim);
+  }
+  .card-type {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-top: 0.25rem;
+  }
+  .card-arrow {
+    position: absolute;
+    right: 1.35rem;
+    bottom: 1.25rem;
+    font-size: 1.1rem;
+    color: var(--gold);
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .card:hover .card-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* CTA */
+  .cta-section {
+    text-align: center;
+    padding: 5rem 3rem 6rem;
+    border-top: 1px solid var(--border);
+  }
+  .cta-section .section-heading {
+    margin-bottom: 1.5rem;
+  }
+  .btn-gold {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.85rem 2.4rem;
+    border-radius: 2px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.25s;
+  }
+  .btn-gold:hover {
+    background: var(--gold-dark);
+    color: var(--paper);
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .footer-copy {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--dim);
+    letter-spacing: 0.04em;
+  }
+  .footer-links {
+    display: flex;
+    gap: 1.75rem;
+    list-style: none;
+  }
+  .footer-links a {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.8rem;
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  .footer-links a:hover {
+    color: var(--gold);
+  }
+
+  /* Responsive */
+  @media (max-width: 960px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: rgba(10,8,5,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 1.5rem;
+      gap: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-links.open { display: flex; }
+    .nav-toggle { display: flex; }
+    .grid { grid-template-columns: 1fr; }
+    .hero { padding: 8rem 1.5rem 3rem; }
+    .portfolio { padding: 3rem 1.5rem; }
+    .stats-bar { padding: 1.25rem 1.5rem; }
+    .cta-section { padding: 3.5rem 1.5rem 4.5rem; }
+    footer {
+      padding: 2rem 1.5rem;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .cursor-dot, .cursor-ring { display: none; }
+    body { cursor: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- Nav -->
+<nav>
+  <a href="/" class="nav-logo"><span class="diamond"></span>Eterno</a>
+  <button class="nav-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/how-it-works">How It Works</a></li>
+    <li><a href="/portfolio" class="active">Portfolio</a></li>
+    <li><a href="/pricing">Pricing</a></li>
+    <li><a href="https://dashboard.eternowebstudio.com/start" class="cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero reveal">
+  <span class="section-tag">Portfolio</span>
+  <h1 class="section-heading">Our Work</h1>
+  <p>17 live websites built for tattoo artists and creative professionals. Every site is custom&nbsp;&mdash; no&nbsp;templates.</p>
+</section>
+
+<!-- Stats bar -->
+<div class="stats-bar reveal">
+  <span>17</span> Live Sites &middot; <span>6</span> Countries &middot; <span>100%</span> Custom Built
+</div>
+
+<!-- Portfolio grid -->
+<section class="portfolio">
+  <div class="portfolio-header reveal">
+    <span class="section-tag">Client Sites</span>
+    <h2 class="section-heading">Built&nbsp;to&nbsp;Last</h2>
+  </div>
+  <div class="grid">
+
+    <a class="card reveal" href="https://tattoosbypaketh.com" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-tattoosbypaketh.jpg" alt="Paketh website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Paketh</span>
+        <span class="card-domain">tattoosbypaketh.com</span>
+        <span class="card-type">Tattoo Artist</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://frankendots.com" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-frankendots.jpg" alt="Frankendots website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Frankendots</span>
+        <span class="card-domain">frankendots.com</span>
+        <span class="card-type">Tattoo Artist</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://infernalgarden.com" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-dannydiablx.jpg" alt="Infernal Garden website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Infernal Garden</span>
+        <span class="card-domain">infernalgarden.com</span>
+        <span class="card-type">Tattoo Studio</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://tatsuink.com" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-tatsutattoos.jpg" alt="Tatsu Ink website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Tatsu Ink</span>
+        <span class="card-domain">tatsuink.com</span>
+        <span class="card-type">Tattoo Studio</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://inkversetattoo.com" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-inkversetattooabi.jpg" alt="Inkverse Tattoo website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Inkverse Tattoo</span>
+        <span class="card-domain">inkversetattoo.com</span>
+        <span class="card-type">Tattoo Studio</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://rubencharre.com" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-rubencharre.jpg" alt="Ruben Charre website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Ruben Charre</span>
+        <span class="card-domain">rubencharre.com</span>
+        <span class="card-type">Creative</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://guccierrezz.com" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-guccierrezz.jpg" alt="Guccierrezz website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Guccierrezz</span>
+        <span class="card-domain">guccierrezz.com</span>
+        <span class="card-type">Tattoo Artist</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://scalpdynamics.com.au" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-scalpdynamics.jpg" alt="Scalp Dynamics website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Scalp Dynamics</span>
+        <span class="card-domain">scalpdynamics.com.au</span>
+        <span class="card-type">SMP Studio</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://eternowebstudio.com/aaronriddletattoos/" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-aaronriddletattoos.jpg" alt="Aaron Riddle website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Aaron Riddle</span>
+        <span class="card-domain">eternowebstudio.com/aaronriddletattoos</span>
+        <span class="card-type">Tattoo Artist</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://eternowebstudio.com/krisxmoon/" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-krisxmoon.jpg" alt="Kris Moon website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Kris Moon</span>
+        <span class="card-domain">eternowebstudio.com/krisxmoon</span>
+        <span class="card-type">Tattoo Artist</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://goldensoultattoo.com" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-goldensoultattoo.jpg" alt="Golden Soul Tattoo website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Golden Soul Tattoo</span>
+        <span class="card-domain">goldensoultattoo.com</span>
+        <span class="card-type">Tattoo Studio</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://ericharetattoo.com" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-ericharetattoo.jpg" alt="Eric Hare website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Eric Hare</span>
+        <span class="card-domain">ericharetattoo.com</span>
+        <span class="card-type">Tattoo Artist</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://prettyboytatt.com" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-prettyboytatt.jpg" alt="Blessed Tattoo HTX website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Blessed Tattoo HTX</span>
+        <span class="card-domain">prettyboytatt.com</span>
+        <span class="card-type">Tattoo Studio</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://yesytattoo.com" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-yesytattoo.jpg" alt="Yesy Tattoo website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Yesy Tattoo</span>
+        <span class="card-domain">yesytattoo.com</span>
+        <span class="card-type">Tattoo Artist</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://tabstattoo.com" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-tabs.jpg" alt="Tabs Tattoo website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Tabs Tattoo</span>
+        <span class="card-domain">tabstattoo.com</span>
+        <span class="card-type">Tattoo Artist</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://venusbalam.com" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-venusbalam.jpg" alt="Venus Balam website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Venus Balam</span>
+        <span class="card-domain">venusbalam.com</span>
+        <span class="card-type">Tattoo Artist</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="https://javiercarrillom.com" target="_blank" rel="noopener">
+      <div class="card-img-wrap">
+        <img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-javiercarrillom.jpg" alt="Javier Carrillo website screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-name">Javier Carrillo</span>
+        <span class="card-domain">javiercarrillom.com</span>
+        <span class="card-type">Tattoo Artist</span>
+        <span class="card-arrow">&rarr;</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section reveal">
+  <span class="section-tag">Ready?</span>
+  <h2 class="section-heading">Want yours?</h2>
+  <br>
+  <a href="https://dashboard.eternowebstudio.com/start" class="btn-gold">Get Started</a>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-copy">&copy; 2026 Eterno OS &nbsp;&middot;&nbsp; Houston TX &middot; CDMX</div>
+  <ul class="footer-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/how-it-works">How It Works</a></li>
+    <li><a href="/portfolio">Portfolio</a></li>
+    <li><a href="/pricing">Pricing</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Custom cursor
+  const dot = document.querySelector('.cursor-dot');
+  const ring = document.querySelector('.cursor-ring');
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.15;
+    ringY += (mouseY - ringY) * 0.15;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Cursor hover effect on interactive elements
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      dot.style.width = '12px';
+      dot.style.height = '12px';
+      ring.style.width = '48px';
+      ring.style.height = '48px';
+    });
+    el.addEventListener('mouseleave', () => {
+      dot.style.width = '8px';
+      dot.style.height = '8px';
+      ring.style.width = '36px';
+      ring.style.height = '36px';
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Mobile nav toggle
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+</script>
+</body>
+</html>

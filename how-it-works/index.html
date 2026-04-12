@@ -439,7 +439,127 @@
         gap: 1rem;
       }
     }
+    /* ─── FAQ ──────────────────────────────────── */
+    .faq {
+      border-top: 1px solid var(--border);
+      padding: 80px 52px;
+    }
+    .faq-header {
+      margin-bottom: 56px;
+    }
+    .faq-list {
+      max-width: 720px;
+    }
+    .faq-item {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+    }
+    .faq-q {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--paper);
+      margin-bottom: 12px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq-q::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq-item.open .faq-q::after {
+      transform: rotate(45deg);
+    }
+    .faq-a {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      color: var(--dim);
+      line-height: 1.7;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      opacity: 1;
+    }
+    .faq-a a { color: var(--gold); text-decoration: none; }
+    .faq-a a:hover { text-decoration: underline; }
+    @media (max-width: 768px) {
+      .faq { padding: 60px 32px; }
+    }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does a tattoo artist website cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Eterno Web Studio offers a free plan that includes a custom 5-page website with a free subdomain. The Pro plan is $25/month and includes a custom domain, analytics, AI booking agent, and priority support. No setup fees, no contracts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to know how to code to build my website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not at all. Just enter your Instagram handle and we build everything automatically. You edit your site from a visual dashboard — no code, no DNS, no hosting setup required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to build my tattoo website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "About 2-4 minutes. Our system scrapes your Instagram, classifies your style, and deploys a custom 5-page site (Home, About, Gallery, Booking, Contact) automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use my own domain name?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — on the Pro plan ($25/month) you can connect any custom domain (.com, .ink, .art, etc.) or purchase one directly from your dashboard."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I turn my Instagram into a website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! That's exactly what Eterno does. Enter your Instagram handle and we automatically scrape your photos, bio, and services to build a professional 5-page website. Your gallery stays in sync with your latest posts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the AI booking agent do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The AI booking agent is a phone-based assistant that answers calls, books appointments, and takes messages when you're busy. It's included in the Pro plan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I want to cancel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cancel anytime from your dashboard. No contracts, no cancellation fees. Your free site stays live on the eternowebstudio.com subdomain even if you downgrade from Pro."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -539,6 +659,44 @@
       <div class="feature-card reveal">
         <h3 class="feature-title">Mobile Responsive</h3>
         <p class="feature-desc">Looks perfect on every device &mdash; phone, tablet, or desktop. No pinching or zooming.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="faq-header">
+      <p class="section-tag reveal">Questions</p>
+      <h2 class="section-heading reveal" style="margin-top:12px;">Frequently Asked</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much does a tattoo artist website cost?</div>
+        <div class="faq-a">Eterno offers a free plan with a custom 5-page website and free subdomain. The Pro plan is $25/month and includes a custom domain, analytics, AI booking agent, and priority support. No setup fees, no contracts.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to know how to code?</div>
+        <div class="faq-a">Not at all. Enter your Instagram handle and we build everything. You edit your site from a visual dashboard — no code, no DNS, no hosting required.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How long does it take to build my site?</div>
+        <div class="faq-a">About 2-4 minutes. Our system scrapes your Instagram, classifies your style, and deploys a 5-page site (Home, About, Gallery, Booking, Contact) automatically.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I use my own domain?</div>
+        <div class="faq-a">Yes — on the Pro plan you can connect any custom domain (.com, .ink, .art, etc.) or purchase one directly from your dashboard.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I turn my Instagram into a website?</div>
+        <div class="faq-a">That's exactly what Eterno does. Enter your handle and we scrape your photos, bio, and services to build a professional site. Your gallery stays in sync with your latest posts.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What does the AI booking agent do?</div>
+        <div class="faq-a">It's a phone-based AI assistant that answers calls, books appointments, and takes messages when you're busy tattooing. Included in the Pro plan.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I want to cancel?</div>
+        <div class="faq-a">Cancel anytime from your dashboard. No contracts, no cancellation fees. Your free site stays live on our subdomain even if you downgrade.</div>
       </div>
     </div>
   </section>

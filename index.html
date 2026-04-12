@@ -125,16 +125,23 @@
 
     /* ─── HERO ───────────────────────────────────── */
     .hero {
-      min-height: 100vh;
+      min-height: 85vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
       position: relative;
+      /* Geometric ink texture — layered SVG lines + radial glow */
+      background:
+        radial-gradient(ellipse 70% 60% at 30% 80%, rgba(201,160,48,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 80% 70%, rgba(139,58,26,0.04) 0%, transparent 60%),
+        url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='0' x2='120' y2='120' stroke='rgba(201,160,48,0.06)' stroke-width='0.5'/%3E%3Cline x1='120' y1='0' x2='0' y2='120' stroke='rgba(201,160,48,0.04)' stroke-width='0.5'/%3E%3Cline x1='60' y1='0' x2='60' y2='120' stroke='rgba(201,160,48,0.03)' stroke-width='0.5'/%3E%3Cline x1='0' y1='60' x2='120' y2='60' stroke='rgba(201,160,48,0.03)' stroke-width='0.5'/%3E%3C/svg%3E"),
+        var(--ink);
+      background-size: auto, auto, 120px 120px, auto;
     }
     .hero-left {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 0 0 72px 52px;
+      padding: 0 0 48px 52px;
       position: relative;
       border-right: 1px solid var(--border);
     }
@@ -178,7 +185,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 0 52px 72px 52px;
+      padding: 0 52px 48px 52px;
       gap: 48px;
     }
     .hero-sub {
@@ -258,11 +265,14 @@
     /* ─── MANIFESTO ──────────────────────────────── */
     .manifesto {
       border-top: 1px solid var(--border);
-      padding: 120px 52px;
+      padding: 80px 52px;
       display: grid;
       grid-template-columns: 280px 1fr;
       gap: 80px;
       align-items: start;
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,160,48,0.03) 0%, transparent 70%),
+        var(--ink);
     }
     .manifesto-tag {
       font-family: 'Space Mono', monospace;
@@ -294,6 +304,9 @@
     /* ─── PROCESS ────────────────────────────────── */
     .process {
       border-top: 1px solid var(--border);
+      background:
+        radial-gradient(ellipse 50% 70% at 20% 30%, rgba(201,160,48,0.03) 0%, transparent 70%),
+        var(--ink);
     }
     .process-header {
       padding: 80px 52px 0;

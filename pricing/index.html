@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Eterno Web Studio | Free Tattoo Artist Website Builder</title>
+<meta name="description" content="Build your tattoo artist website for free. Upgrade to Pro for $25/mo to get a custom domain, analytics, and AI booking agent. No contracts.">
+<meta property="og:title" content="Pricing — Eterno Web Studio | Free Tattoo Artist Website Builder">
+<meta property="og:description" content="Build your tattoo artist website for free. Upgrade to Pro for $25/mo to get a custom domain, analytics, and AI booking agent. No contracts.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://eternowebstudio.com/pricing">
+<meta property="og:site_name" content="Eterno Web Studio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pricing — Eterno Web Studio | Free Tattoo Artist Website Builder">
+<meta name="twitter:description" content="Build your tattoo artist website for free. Upgrade to Pro for $25/mo to get a custom domain, analytics, and AI booking agent. No contracts.">
+<link rel="canonical" href="https://eternowebstudio.com/pricing">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #0a0805;
+    --paper: #f5f0e8;
+    --gold: #c9a030;
+    --gold-dark: #8a6b1a;
+    --rust: #8b3a1a;
+    --cream: #e8e0ce;
+    --dim: #6b6055;
+    --border: rgba(201,160,48,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Syne', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  /* Custom cursor */
+  .cursor-dot {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10001;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10001;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease;
+  }
+
+  a { color: inherit; text-decoration: none; cursor: none; }
+  button { cursor: none; }
+
+  /* Section tags */
+  .section-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  /* Section headings */
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(32px, 4vw, 56px);
+    line-height: 1.1;
+    color: var(--paper);
+    margin-bottom: 24px;
+  }
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(10,8,5,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--paper);
+  }
+  .nav-logo .diamond {
+    width: 10px;
+    height: 10px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--dim);
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--paper);
+  }
+  .nav-links .btn-nav {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--gold);
+    padding: 10px 24px;
+    border-radius: 0;
+    transition: background 0.2s ease;
+  }
+  .nav-links .btn-nav:hover {
+    background: var(--gold-dark);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 180px 48px 100px;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .hero .section-heading {
+    font-size: clamp(40px, 5vw, 72px);
+    margin-bottom: 20px;
+  }
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--dim);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── PRICING CARDS ── */
+  .pricing-section {
+    padding: 40px 48px 120px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border);
+  }
+  .pricing-card {
+    padding: 56px 52px;
+  }
+  .pricing-card + .pricing-card {
+    border-left: 1px solid var(--border);
+  }
+  .pricing-card.featured {
+    background: rgba(201,160,48,0.05);
+  }
+  .pricing-card .card-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .pricing-card .card-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(28px, 3vw, 40px);
+    color: var(--paper);
+    margin-bottom: 16px;
+  }
+  .pricing-card .price-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  .pricing-card .price-dollar {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--paper);
+    line-height: 1;
+    margin-top: 12px;
+  }
+  .pricing-card .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(4rem, 6vw, 5.5rem);
+    color: var(--paper);
+    line-height: 1;
+  }
+  .pricing-card .price-period {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--dim);
+    letter-spacing: 0.08em;
+    margin-bottom: 40px;
+  }
+  .pricing-card .features {
+    list-style: none;
+    margin-bottom: 48px;
+  }
+  .pricing-card .features li {
+    font-size: 0.95rem;
+    color: var(--cream);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(201,160,48,0.1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pricing-card .features li::before {
+    content: '~';
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .btn-outline {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--paper);
+    border: 1px solid var(--border);
+    padding: 16px 36px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .btn-outline:hover {
+    border-color: var(--gold);
+    background: rgba(201,160,48,0.08);
+  }
+  .btn-gold {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--gold);
+    padding: 16px 36px;
+    border: 1px solid var(--gold);
+    transition: background 0.2s ease;
+  }
+  .btn-gold:hover {
+    background: var(--gold-dark);
+  }
+
+  /* ── FAQ ── */
+  .faq-section {
+    padding: 120px 48px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-list {
+    margin-top: 48px;
+  }
+  .faq-item {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+  }
+  .faq-question {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--paper);
+    margin-bottom: 12px;
+  }
+  .faq-answer {
+    font-size: 0.95rem;
+    color: var(--dim);
+    line-height: 1.7;
+  }
+  .faq-answer a {
+    color: var(--gold);
+    border-bottom: 1px solid var(--border);
+    transition: border-color 0.2s ease;
+  }
+  .faq-answer a:hover {
+    border-color: var(--gold);
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    padding: 120px 48px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  .cta-section .section-heading {
+    margin-bottom: 32px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-copy {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--dim);
+    letter-spacing: 0.06em;
+  }
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .footer-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--dim);
+    letter-spacing: 0.06em;
+    transition: color 0.2s ease;
+  }
+  .footer-links a:hover {
+    color: var(--paper);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav { padding: 16px 24px; }
+    .nav-links { gap: 20px; }
+    .hero { padding: 140px 24px 80px; }
+    .pricing-section { padding: 24px 24px 80px; }
+    .pricing-grid {
+      grid-template-columns: 1fr;
+    }
+    .pricing-card + .pricing-card {
+      border-left: none;
+      border-top: 1px solid var(--border);
+    }
+    .pricing-card { padding: 40px 32px; }
+    .faq-section { padding: 80px 24px; }
+    .cta-section { padding: 80px 24px; }
+    .footer {
+      padding: 32px 24px;
+      flex-direction: column;
+      gap: 24px;
+      text-align: center;
+    }
+  }
+  @media (max-width: 480px) {
+    .nav-links a:not(.btn-nav) { display: none; }
+    .pricing-card { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- Nav -->
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <span class="diamond"></span>
+    Eterno
+  </a>
+  <ul class="nav-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/how-it-works">How It Works</a></li>
+    <li><a href="/portfolio">Portfolio</a></li>
+    <li><a href="/pricing" class="active">Pricing</a></li>
+    <li><a href="https://dashboard.eternowebstudio.com/start" class="btn-nav">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero reveal">
+  <span class="section-tag">Pricing</span>
+  <h1 class="section-heading">Simple Pricing</h1>
+  <p>Start free. Upgrade when you're ready. No surprise fees.</p>
+</section>
+
+<!-- Pricing Cards -->
+<section class="pricing-section">
+  <div class="pricing-grid reveal">
+
+    <!-- Free Plan -->
+    <div class="pricing-card">
+      <span class="card-tag">&mdash; Free Plan</span>
+      <h2 class="card-name">Free</h2>
+      <div class="price-row">
+        <span class="price-dollar">$</span>
+        <span class="price-amount">0</span>
+      </div>
+      <p class="price-period">forever &middot; no credit card</p>
+      <ul class="features">
+        <li>Custom 5-page website</li>
+        <li>Free eternowebstudio.com subdomain</li>
+        <li>SEO optimization</li>
+        <li>Contact &amp; booking forms</li>
+        <li>Visual editor</li>
+        <li>Instagram gallery sync</li>
+      </ul>
+      <a href="https://dashboard.eternowebstudio.com/start" class="btn-outline">Start Building &rarr;</a>
+    </div>
+
+    <!-- Pro Plan -->
+    <div class="pricing-card featured">
+      <span class="card-tag">&mdash; Pro Plan&ensp;&#9733; Most Popular</span>
+      <h2 class="card-name">Pro</h2>
+      <div class="price-row">
+        <span class="price-dollar">$</span>
+        <span class="price-amount">25</span>
+      </div>
+      <p class="price-period">per month &middot; billed monthly</p>
+      <ul class="features">
+        <li>Everything in Free</li>
+        <li>Custom domain (.com, .ink, etc.)</li>
+        <li>Analytics dashboard</li>
+        <li>AI booking agent</li>
+        <li>Priority support</li>
+        <li>Unlimited content updates</li>
+      </ul>
+      <a href="https://dashboard.eternowebstudio.com/start" class="btn-gold">Go Pro &rarr;</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="reveal">
+    <span class="section-tag">Questions</span>
+    <h2 class="section-heading">Frequently Asked</h2>
+  </div>
+
+  <div class="faq-list">
+
+    <div class="faq-item reveal">
+      <p class="faq-question">Do I need to know how to code?</p>
+      <p class="faq-answer">Not at all. Enter your Instagram handle and we build everything. You edit your site from a visual dashboard — no code ever.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <p class="faq-question">How long does it take to build my site?</p>
+      <p class="faq-answer">About 2-4 minutes. Our system scrapes your Instagram, classifies your style, and deploys a 5-page site automatically.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <p class="faq-question">Can I use my own domain?</p>
+      <p class="faq-answer">Yes — on the Pro plan you can connect any custom domain (.com, .ink, .art, etc.) or purchase one directly from your dashboard.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <p class="faq-question">What if I want to cancel?</p>
+      <p class="faq-answer">Cancel anytime from your dashboard. No contracts, no cancellation fees. Your free site stays live on our subdomain.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <p class="faq-question">What does the AI booking agent do?</p>
+      <p class="faq-answer">It's a phone-based AI assistant that answers calls, books appointments, and takes messages when you're busy tattooing.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <p class="faq-question">Can I see examples of sites you've built?</p>
+      <p class="faq-answer">Absolutely — check out our <a href="/portfolio">portfolio</a> to see 17+ live sites.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="reveal">
+    <span class="section-tag">Get Started</span>
+    <h2 class="section-heading">Start for free today</h2>
+    <a href="https://dashboard.eternowebstudio.com/start" class="btn-gold">Get Started &rarr;</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <span class="footer-copy">&copy; 2026 Eterno OS &ensp; Houston TX &middot; CDMX</span>
+  <ul class="footer-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/how-it-works">How It Works</a></li>
+    <li><a href="/portfolio">Portfolio</a></li>
+    <li><a href="/pricing">Pricing</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<!-- JS: Custom cursor -->
+<script>
+  (function() {
+    const dot = document.querySelector('.cursor-dot');
+    const ring = document.querySelector('.cursor-ring');
+    let mx = -100, my = -100, rx = -100, ry = -100;
+
+    document.addEventListener('mousemove', function(e) {
+      mx = e.clientX;
+      my = e.clientY;
+    });
+
+    function animate() {
+      rx += (mx - rx) * 0.15;
+      ry += (my - ry) * 0.15;
+      dot.style.left = mx + 'px';
+      dot.style.top = my + 'px';
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    document.querySelectorAll('a, button').forEach(function(el) {
+      el.addEventListener('mouseenter', function() {
+        ring.style.width = '52px';
+        ring.style.height = '52px';
+      });
+      el.addEventListener('mouseleave', function() {
+        ring.style.width = '36px';
+        ring.style.height = '36px';
+      });
+    });
+  })();
+</script>
+
+<!-- JS: Reveal on scroll -->
+<script>
+  (function() {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+  })();
+</script>
+
+</body>
+</html>

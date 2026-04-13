@@ -58,109 +58,101 @@
   /* Custom cursor */
   .cursor-dot {
     position: fixed;
-    width: 8px;
-    height: 8px;
+    width: 8px; height: 8px;
     background: var(--gold);
     border-radius: 50%;
     pointer-events: none;
-    z-index: 10001;
-    mix-blend-mode: difference;
+    z-index: 9999;
     transform: translate(-50%, -50%);
     transition: width 0.2s, height 0.2s;
+    mix-blend-mode: difference;
   }
   .cursor-ring {
     position: fixed;
-    width: 36px;
-    height: 36px;
-    border: 1.5px solid var(--gold);
+    width: 36px; height: 36px;
+    border: 1px solid var(--gold);
     border-radius: 50%;
     pointer-events: none;
-    z-index: 10000;
-    mix-blend-mode: difference;
+    z-index: 9998;
     transform: translate(-50%, -50%);
-    transition: width 0.3s, height 0.3s, border-color 0.3s;
+    transition: width 0.2s, height 0.2s, opacity 0.2s;
+    opacity: 0.5;
   }
 
   /* Nav */
   nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+    top: 0; left: 0; right: 0;
+    z-index: 500;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.25rem 3rem;
+    padding: 18px 48px;
     background: rgba(10,8,5,0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: 1.35rem;
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     color: var(--paper);
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 10px;
   }
-  .nav-logo .diamond {
-    width: 10px;
-    height: 10px;
+  .logo-mark {
+    width: 10px; height: 10px;
     background: var(--gold);
     transform: rotate(45deg);
-    display: inline-block;
     flex-shrink: 0;
   }
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 36px;
     list-style: none;
   }
   .nav-links a {
     font-family: 'Syne', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: var(--cream);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: var(--dim);
     text-decoration: none;
-    transition: color 0.25s;
+    transition: color 0.2s;
   }
-  .nav-links a:hover,
-  .nav-links a.active {
-    color: var(--gold);
-  }
-  .nav-links .cta {
-    background: var(--gold);
-    color: var(--ink);
-    padding: 0.55rem 1.4rem;
-    border-radius: 2px;
+  .nav-links a:hover, .nav-links a.active { color: var(--paper); }
+  .nav-cta {
+    background: var(--gold) !important;
+    color: var(--ink) !important;
+    padding: 10px 22px;
     font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 0.04em;
-    transition: background 0.25s;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.7rem !important;
+    transition: background 0.2s, transform 0.2s !important;
   }
-  .nav-links .cta:hover {
-    background: var(--gold-dark);
-    color: var(--paper);
+  .nav-cta:hover {
+    background: var(--paper) !important;
+    transform: translateY(-1px);
   }
-
-  /* Mobile nav toggle */
-  .nav-toggle {
+  .menu-toggle {
     display: none;
     flex-direction: column;
     gap: 5px;
     background: none;
     border: none;
-    cursor: none;
+    cursor: pointer;
     padding: 4px;
+    z-index: 600;
   }
-  .nav-toggle span {
+  .menu-toggle span {
     display: block;
-    width: 24px;
+    width: 22px;
     height: 2px;
     background: var(--paper);
     transition: transform 0.3s, opacity 0.3s;
@@ -380,24 +372,28 @@
   @media (max-width: 960px) {
     .grid { grid-template-columns: repeat(2, 1fr); }
   }
-  @media (max-width: 640px) {
-    nav { padding: 1rem 1.5rem; }
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .menu-toggle { display: flex; }
     .nav-links {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
+      position: fixed;
+      top: 0; right: 0;
+      width: 280px;
+      height: 100vh;
+      background: var(--ink);
       flex-direction: column;
-      background: rgba(10,8,5,0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 1.5rem;
-      gap: 1.25rem;
-      border-bottom: 1px solid var(--border);
+      justify-content: center;
+      align-items: flex-start;
+      padding-left: 40px;
+      gap: 28px;
+      transform: translateX(100%);
+      transition: transform 0.4s ease;
+      border-left: 1px solid var(--border);
+      z-index: 550;
     }
-    .nav-links.open { display: flex; }
-    .nav-toggle { display: flex; }
+    .nav-links.open { transform: translateX(0); }
+    .nav-links a { font-size: 1rem; color: var(--paper); }
+    .nav-cta { font-size: 0.75rem !important; }
     .grid { grid-template-columns: 1fr; }
     .hero { padding: 8rem 1.5rem 3rem; }
     .portfolio { padding: 3rem 1.5rem; }
@@ -421,8 +417,11 @@
 
 <!-- Nav -->
 <nav>
-  <a href="/" class="nav-logo"><span class="diamond"></span>Eterno</a>
-  <button class="nav-toggle" aria-label="Menu">
+  <a href="/" class="logo">
+    <div class="logo-mark"></div>
+    Eterno
+  </a>
+  <button class="menu-toggle" aria-label="Toggle menu">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links">
@@ -430,7 +429,7 @@
     <li><a href="/how-it-works">How It Works</a></li>
     <li><a href="/portfolio" class="active">Portfolio</a></li>
     <li><a href="/pricing">Pricing</a></li>
-    <li><a href="https://dashboard.eternowebstudio.com/start" class="cta">Get Started</a></li>
+    <li><a href="https://dashboard.eternowebstudio.com/start" class="nav-cta">Get Started</a></li>
   </ul>
 </nav>
 
@@ -685,58 +684,30 @@
   // Custom cursor
   const dot = document.querySelector('.cursor-dot');
   const ring = document.querySelector('.cursor-ring');
-  let mouseX = 0, mouseY = 0;
-  let ringX = 0, ringY = 0;
-
-  document.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.left = mouseX + 'px';
-    dot.style.top = mouseY + 'px';
-  });
-
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.15;
-    ringY += (mouseY - ringY) * 0.15;
-    ring.style.left = ringX + 'px';
-    ring.style.top = ringY + 'px';
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
-
-  // Cursor hover effect on interactive elements
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function animCursor() {
+    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animCursor);
+  })();
   document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      dot.style.width = '12px';
-      dot.style.height = '12px';
-      ring.style.width = '48px';
-      ring.style.height = '48px';
-    });
-    el.addEventListener('mouseleave', () => {
-      dot.style.width = '8px';
-      dot.style.height = '8px';
-      ring.style.width = '36px';
-      ring.style.height = '36px';
-    });
+    el.addEventListener('mouseenter', () => { dot.style.width = '18px'; dot.style.height = '18px'; ring.style.width = '52px'; ring.style.height = '52px'; ring.style.opacity = '0.8'; });
+    el.addEventListener('mouseleave', () => { dot.style.width = '8px'; dot.style.height = '8px'; ring.style.width = '36px'; ring.style.height = '36px'; ring.style.opacity = '0.5'; });
   });
 
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
+  // Hamburger menu
+  const toggle = document.querySelector('.menu-toggle');
+  const links = document.querySelector('.nav-links');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // Scroll reveals
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.1 });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Mobile nav toggle
-  const toggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  toggle.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-  });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>

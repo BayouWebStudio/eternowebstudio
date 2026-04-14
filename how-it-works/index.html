@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works — Eterno Web Studio | Build Your Tattoo Artist Website</title>
+  <meta name="description" content="Build your tattoo artist website in 4 easy steps: enter your Instagram, pick a theme, choose a layout, and go live in minutes. No coding required.">
+  <meta property="og:title" content="How It Works — Eterno Web Studio">
+  <meta property="og:description" content="Build your tattoo artist website in 4 easy steps: enter your Instagram, pick a theme, choose a layout, and go live in minutes. No coding required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://eternowebstudio.com/how-it-works">
+  <meta property="og:site_name" content="Eterno Web Studio">
+  <meta property="og:image" content="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/eterno-og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How It Works — Eterno Web Studio">
+  <meta name="twitter:description" content="Build your tattoo artist website in 4 easy steps: enter your Instagram, pick a theme, choose a layout, and go live in minutes. No coding required.">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/eterno-og.png">
+  <link rel="icon" href="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/eterno-logo-square.png" type="image/png">
+  <link rel="canonical" href="https://eternowebstudio.com/how-it-works">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ink: #0a0805;
+      --paper: #f5f0e8;
+      --gold: #c9a030;
+      --gold-dark: #8a6b1a;
+      --rust: #8b3a1a;
+      --cream: #e8e0ce;
+      --dim: #6b6055;
+      --border: rgba(201,160,48,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--paper);
+      font-family: 'Syne', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      cursor: none;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    /* Custom cursor */
+    .cursor-dot {
+      position: fixed;
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s;
+      mix-blend-mode: difference;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, opacity 0.2s;
+      opacity: 0.5;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(10,8,5,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--paper);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-mark {
+      width: 10px; height: 10px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--paper); }
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--ink) !important;
+      padding: 10px 22px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.7rem !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover {
+      background: var(--paper) !important;
+      transform: translateY(-1px);
+    }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 600;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--paper);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* Section tag */
+    .section-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    /* Section heading */
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--paper);
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10rem 2rem 5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero .section-heading {
+      font-size: clamp(40px, 6vw, 72px);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-subtitle {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      color: var(--dim);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* Steps section */
+    .steps-section {
+      padding: 6rem 2rem;
+    }
+
+    .steps-section .section-tag {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .step {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .step:last-child {
+      border-bottom: none;
+    }
+
+    .step-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(56px, 7vw, 88px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--gold);
+      opacity: 0.2;
+    }
+
+    .step-content {
+      padding-top: 0.5rem;
+    }
+
+    .step-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-weight: 700;
+      color: var(--paper);
+      margin-bottom: 1rem;
+    }
+
+    .step-description {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      color: var(--dim);
+      line-height: 1.75;
+      max-width: 580px;
+    }
+
+    /* What You Get */
+    .features-section {
+      padding: 6rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      border: 1px solid var(--border);
+      padding: 2rem 1.75rem;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: var(--gold);
+      background: rgba(201, 160, 48, 0.04);
+    }
+
+    .feature-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--paper);
+      margin-bottom: 0.65rem;
+    }
+
+    .feature-desc {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.88rem;
+      color: var(--dim);
+      line-height: 1.65;
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 6rem 2rem 7rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-section .section-heading {
+      margin-bottom: 2rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      background: var(--gold);
+      padding: 0.9rem 2.5rem;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .cta-btn:hover {
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-copy {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--dim);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.78rem;
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--paper);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1.2rem;
+      }
+
+      .nav-links a {
+        font-size: 0.72rem;
+      }
+
+      .hero {
+        padding: 8rem 1.5rem 4rem;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        padding: 3rem 0;
+      }
+
+      .step-number {
+        font-size: 48px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .menu-toggle { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 0; right: 0;
+        width: 280px;
+        height: 100vh;
+        background: var(--ink);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding-left: 40px;
+        gap: 28px;
+        transform: translateX(100%);
+        transition: transform 0.4s ease;
+        border-left: 1px solid var(--border);
+        z-index: 550;
+      }
+      .nav-links.open { transform: translateX(0); }
+      .nav-links a { font-size: 1rem; color: var(--paper); }
+      .nav-cta { font-size: 0.75rem !important; }
+      .cursor-dot, .cursor-ring { display: none; }
+      body { cursor: auto; }
+    }
+
+    @media (max-width: 480px) {
+      .features-grid {
+        gap: 1rem;
+      }
+    }
+    /* ─── FAQ ──────────────────────────────────── */
+    .faq {
+      border-top: 1px solid var(--border);
+      padding: 80px 52px;
+    }
+    .faq-header {
+      margin-bottom: 56px;
+    }
+    .faq-list {
+      max-width: 720px;
+    }
+    .faq-item {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+    }
+    .faq-q {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--paper);
+      margin-bottom: 12px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq-q::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq-item.open .faq-q::after {
+      transform: rotate(45deg);
+    }
+    .faq-a {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      color: var(--dim);
+      line-height: 1.7;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      opacity: 1;
+    }
+    .faq-a a { color: var(--gold); text-decoration: none; }
+    .faq-a a:hover { text-decoration: underline; }
+    @media (max-width: 768px) {
+      .faq { padding: 60px 32px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does a tattoo artist website cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Eterno Web Studio offers a free plan that includes a custom 5-page website with a free subdomain. The Pro plan is $25/month and includes a custom domain, analytics, AI booking agent, and priority support. No setup fees, no contracts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to know how to code to build my website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not at all. Just enter your Instagram handle and we build everything automatically. You edit your site from a visual dashboard — no code, no DNS, no hosting setup required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to build my tattoo website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "About 2-4 minutes. Our system scrapes your Instagram, classifies your style, and deploys a custom 5-page site (Home, About, Gallery, Booking, Contact) automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use my own domain name?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — on the Pro plan ($25/month) you can connect any custom domain (.com, .ink, .art, etc.) or purchase one directly from your dashboard."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I turn my Instagram into a website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! That's exactly what Eterno does. Enter your Instagram handle and we automatically scrape your photos, bio, and services to build a professional 5-page website. Your gallery stays in sync with your latest posts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the AI booking agent do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The AI booking agent is a phone-based assistant that answers calls, books appointments, and takes messages when you're busy. It's included in the Pro plan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I want to cancel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cancel anytime from your dashboard. No contracts, no cancellation fees. Your free site stays live on the eternowebstudio.com subdomain even if you downgrade from Pro."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="/" class="logo">
+      <div class="logo-mark"></div>
+      Eterno
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/about">About</a></li>
+      <li><a href="/how-it-works" class="active">How It Works</a></li>
+      <li><a href="/portfolio">Portfolio</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="https://dashboard.eternowebstudio.com/start" class="nav-cta">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="reveal">
+      <p class="section-tag">The Process</p>
+      <h1 class="section-heading">How It Works</h1>
+      <p class="hero-subtitle">From Instagram to live website in 4 easy steps. No tech knowledge required.</p>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section class="steps-section">
+    <p class="section-tag reveal">Step by Step</p>
+
+    <div class="step reveal">
+      <div class="step-number">01</div>
+      <div class="step-content">
+        <h2 class="step-heading">Enter Your Instagram</h2>
+        <p class="step-description">We scrape your photos, bio, services, and contact info automatically. Just enter your handle &mdash; we do the rest.</p>
+      </div>
+    </div>
+
+    <div class="step reveal">
+      <div class="step-number">02</div>
+      <div class="step-content">
+        <h2 class="step-heading">Pick Your Style</h2>
+        <p class="step-description">Choose from 6 hand-crafted themes designed for creative professionals: Geometric, Neo Traditional, Blackwork, Realism, New School, and Watercolor. Or let us auto-detect the perfect match from your photos.</p>
+      </div>
+    </div>
+
+    <div class="step reveal">
+      <div class="step-number">03</div>
+      <div class="step-content">
+        <h2 class="step-heading">Choose Your Layout</h2>
+        <p class="step-description">Select how your site is structured: Monolith (single column), Split (side-by-side), Showcase (hero + grid), or Raw (dense magazine). Can't decide? Pick "Surprise Me" and we'll choose for you.</p>
+      </div>
+    </div>
+
+    <div class="step reveal">
+      <div class="step-number">04</div>
+      <div class="step-content">
+        <h2 class="step-heading">Sign Up &amp; Build</h2>
+        <p class="step-description">Create a free account and your site starts building immediately. In 2&ndash;4 minutes you'll have a live 5-page website: Home, About, Gallery, Booking, and Contact.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What You Get -->
+  <section class="features-section">
+    <div class="features-header reveal">
+      <p class="section-tag">Included</p>
+      <h2 class="section-heading">What You Get</h2>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <h3 class="feature-title">5-Page Custom Website</h3>
+        <p class="feature-desc">Home, About, Gallery, Booking, Contact &mdash; all built from your Instagram and ready to go live.</p>
+      </div>
+      <div class="feature-card reveal">
+        <h3 class="feature-title">Visual Editor</h3>
+        <p class="feature-desc">Edit text, images, and sections right from your dashboard. No code, no confusion.</p>
+      </div>
+      <div class="feature-card reveal">
+        <h3 class="feature-title">Instagram Gallery Sync</h3>
+        <p class="feature-desc">Your latest posts auto-update on your site. Post on IG, see it on your website.</p>
+      </div>
+      <div class="feature-card reveal">
+        <h3 class="feature-title">Booking Forms</h3>
+        <p class="feature-desc">Clients can request appointments directly from your site. No back-and-forth DMs.</p>
+      </div>
+      <div class="feature-card reveal">
+        <h3 class="feature-title">SEO Optimized</h3>
+        <p class="feature-desc">Built to rank on Google for your city and services. Get found by clients searching near you.</p>
+      </div>
+      <div class="feature-card reveal">
+        <h3 class="feature-title">Mobile Responsive</h3>
+        <p class="feature-desc">Looks perfect on every device &mdash; phone, tablet, or desktop. No pinching or zooming.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="faq-header">
+      <p class="section-tag reveal">Questions</p>
+      <h2 class="section-heading reveal" style="margin-top:12px;">Frequently Asked</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much does a tattoo artist website cost?</div>
+        <div class="faq-a">Eterno offers a free plan with a custom 5-page website and free subdomain. The Pro plan is $25/month and includes a custom domain, analytics, AI booking agent, and priority support. No setup fees, no contracts.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to know how to code?</div>
+        <div class="faq-a">Not at all. Enter your Instagram handle and we build everything. You edit your site from a visual dashboard — no code, no DNS, no hosting required.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How long does it take to build my site?</div>
+        <div class="faq-a">About 2-4 minutes. Our system scrapes your Instagram, classifies your style, and deploys a 5-page site (Home, About, Gallery, Booking, Contact) automatically.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I use my own domain?</div>
+        <div class="faq-a">Yes — on the Pro plan you can connect any custom domain (.com, .ink, .art, etc.) or purchase one directly from your dashboard.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I turn my Instagram into a website?</div>
+        <div class="faq-a">That's exactly what Eterno does. Enter your handle and we scrape your photos, bio, and services to build a professional site. Your gallery stays in sync with your latest posts.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What does the AI booking agent do?</div>
+        <div class="faq-a">It's a phone-based AI assistant that answers calls, books appointments, and takes messages when you're busy tattooing. Included in the Pro plan.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I want to cancel?</div>
+        <div class="faq-a">Cancel anytime from your dashboard. No contracts, no cancellation fees. Your free site stays live on our subdomain even if you downgrade.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="reveal">
+      <p class="section-tag">Let's Go</p>
+      <h2 class="section-heading">Ready to try it?</h2>
+      <a href="https://dashboard.eternowebstudio.com/start" class="cta-btn">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-copy">&copy; 2026 Eterno OS &middot; Houston, TX</p>
+    <ul class="footer-links">
+      <li><a href="/about">About</a></li>
+      <li><a href="/how-it-works">How It Works</a></li>
+      <li><a href="/portfolio">Portfolio</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    // Custom cursor
+    const dot = document.querySelector('.cursor-dot');
+    const ring = document.querySelector('.cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function animCursor() {
+      dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+      rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(animCursor);
+    })();
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => { dot.style.width = '18px'; dot.style.height = '18px'; ring.style.width = '52px'; ring.style.height = '52px'; ring.style.opacity = '0.8'; });
+      el.addEventListener('mouseleave', () => { dot.style.width = '8px'; dot.style.height = '8px'; ring.style.width = '36px'; ring.style.height = '36px'; ring.style.opacity = '0.5'; });
+    });
+
+    // Hamburger menu
+    const toggle = document.querySelector('.menu-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+    // Scroll reveals
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>

@@ -718,6 +718,111 @@
       line-height: 1.7;
     }
 
+    /* ─── GALLERY PREVIEW ─────────────────────────── */
+    .gallery-preview {
+      border-top: 1px solid var(--border);
+      padding: 100px 48px;
+      background:
+        radial-gradient(ellipse 60% 70% at 50% 40%, rgba(201,160,48,0.04) 0%, transparent 70%),
+        var(--ink);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 48px;
+    }
+    .gallery-grid a {
+      display: block;
+      overflow: hidden;
+      border-radius: 4px;
+      border: 1px solid rgba(201,160,48,0.12);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .gallery-grid a:hover {
+      border-color: var(--gold);
+      transform: scale(1.02);
+      z-index: 1;
+    }
+    .gallery-grid img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(25%) brightness(0.9);
+      transition: filter 0.4s;
+    }
+    .gallery-grid a:hover img {
+      filter: grayscale(0%) brightness(1);
+    }
+    .gallery-cta {
+      text-align: center;
+      margin-top: 48px;
+    }
+    .btn-gallery {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 16px 36px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .btn-gallery:hover {
+      background: var(--gold);
+      color: var(--ink);
+      transform: translateY(-2px);
+    }
+
+    /* ─── PRICING TABLE ──────────────────────────── */
+    .pricing-compare {
+      margin-top: 48px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1fr 120px 120px;
+      border-bottom: 1px solid rgba(201,160,48,0.1);
+    }
+    .compare-row:last-child { border-bottom: none; }
+    .compare-row.compare-header {
+      background: rgba(201,160,48,0.06);
+    }
+    .compare-cell {
+      padding: 14px 20px;
+      font-size: 0.85rem;
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+    }
+    .compare-cell:not(:first-child) {
+      justify-content: center;
+      border-left: 1px solid rgba(201,160,48,0.1);
+    }
+    .compare-header .compare-cell {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .compare-cell .check {
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+    .compare-cell .dash {
+      color: rgba(107,96,85,0.5);
+    }
+
     /* ─── CTA ────────────────────────────────────── */
     .cta {
       border-top: 1px solid var(--border);
@@ -830,6 +935,9 @@
       .process-step:last-child { border-bottom: none; }
       .portfolio { padding: 80px 32px; }
       .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-preview { padding: 80px 32px; }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .compare-row { grid-template-columns: 1fr 100px 100px; }
       .pricing { padding: 80px 32px; }
       .pricing-cards { grid-template-columns: 1fr; }
       .plan:first-child { border-right: none; border-bottom: 1px solid var(--border); }
@@ -867,6 +975,10 @@
       .process-step { padding: 40px 24px; }
       .portfolio { padding: 64px 24px; }
       .portfolio-grid { grid-template-columns: 1fr; }
+      .gallery-preview { padding: 64px 24px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .compare-row { grid-template-columns: 1fr 80px 80px; }
+      .compare-cell { padding: 12px 14px; font-size: 0.78rem; }
       .pricing { padding: 64px 24px; }
       .plan { padding: 40px 28px; }
       .faq { padding: 56px 24px; }
@@ -1083,6 +1195,33 @@
     </div>
   </section>
 
+  <!-- GALLERY PREVIEW -->
+  <section class="gallery-preview">
+    <div class="section-header">
+      <div>
+        <p class="section-tag reveal">Client Gallery</p>
+        <h2 class="section-h2 reveal reveal-d1">See the Work</h2>
+      </div>
+    </div>
+    <div class="gallery-grid">
+      <a href="https://tattoosbypaketh.com" target="_blank" rel="noopener" class="reveal"><img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-tattoosbypaketh.jpg" alt="Paketh" loading="lazy"/></a>
+      <a href="https://frankendots.com" target="_blank" rel="noopener" class="reveal"><img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-frankendots.jpg" alt="Frankendots" loading="lazy"/></a>
+      <a href="https://goldensoultattoo.com" target="_blank" rel="noopener" class="reveal"><img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-goldensoultattoo.jpg" alt="Golden Soul Tattoo" loading="lazy"/></a>
+      <a href="https://guccierrezz.com" target="_blank" rel="noopener" class="reveal"><img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-guccierrezz.jpg" alt="Guccierrezz" loading="lazy"/></a>
+      <a href="https://venusbalam.com" target="_blank" rel="noopener" class="reveal"><img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-venusbalam.jpg" alt="Venus Balam" loading="lazy"/></a>
+      <a href="https://scalpdynamics.com.au" target="_blank" rel="noopener" class="reveal"><img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-scalpdynamics.jpg" alt="Scalp Dynamics" loading="lazy"/></a>
+      <a href="https://rubencharre.com" target="_blank" rel="noopener" class="reveal"><img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-rubencharre.jpg" alt="Ruben Charre" loading="lazy"/></a>
+      <a href="https://krisxmoon.com" target="_blank" rel="noopener" class="reveal"><img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-krisxmoon.jpg" alt="Kris Moon" loading="lazy"/></a>
+      <a href="https://ericharetattoo.com" target="_blank" rel="noopener" class="reveal"><img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-ericharetattoo.jpg" alt="Eric Hare" loading="lazy"/></a>
+      <a href="https://infernalgarden.com" target="_blank" rel="noopener" class="reveal"><img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-dannydiablx.jpg" alt="Infernal Garden" loading="lazy"/></a>
+      <a href="https://tatsuink.com" target="_blank" rel="noopener" class="reveal"><img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-tatsutattoos.jpg" alt="Tatsu Ink" loading="lazy"/></a>
+      <a href="https://inkversetattoo.com" target="_blank" rel="noopener" class="reveal"><img src="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/preview-inkversetattooabi.jpg" alt="Inkverse Tattoo" loading="lazy"/></a>
+    </div>
+    <div class="gallery-cta reveal">
+      <a href="/portfolio" class="btn-gallery">View Full Gallery <span>&rarr;</span></a>
+    </div>
+  </section>
+
   <!-- PRICING -->
   <section class="pricing">
     <div class="section-header">
@@ -1128,6 +1267,63 @@
           <li>Unlimited content updates</li>
         </ul>
         <a href="https://dashboard.eternowebstudio.com/start" class="btn-plan btn-gold">Go Pro &rarr;</a>
+      </div>
+    </div>
+    <div class="pricing-compare reveal">
+      <div class="compare-row compare-header">
+        <div class="compare-cell">Feature</div>
+        <div class="compare-cell">Free</div>
+        <div class="compare-cell">Pro</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell">Custom 5-page website</div>
+        <div class="compare-cell"><span class="check">&check;</span></div>
+        <div class="compare-cell"><span class="check">&check;</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell">SEO optimization</div>
+        <div class="compare-cell"><span class="check">&check;</span></div>
+        <div class="compare-cell"><span class="check">&check;</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell">Visual editor</div>
+        <div class="compare-cell"><span class="check">&check;</span></div>
+        <div class="compare-cell"><span class="check">&check;</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell">Instagram gallery sync</div>
+        <div class="compare-cell"><span class="check">&check;</span></div>
+        <div class="compare-cell"><span class="check">&check;</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell">Booking forms</div>
+        <div class="compare-cell"><span class="check">&check;</span></div>
+        <div class="compare-cell"><span class="check">&check;</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell">Custom domain</div>
+        <div class="compare-cell"><span class="dash">&mdash;</span></div>
+        <div class="compare-cell"><span class="check">&check;</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell">Analytics dashboard</div>
+        <div class="compare-cell"><span class="dash">&mdash;</span></div>
+        <div class="compare-cell"><span class="check">&check;</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell">AI booking agent</div>
+        <div class="compare-cell"><span class="dash">&mdash;</span></div>
+        <div class="compare-cell"><span class="check">&check;</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell">Priority support</div>
+        <div class="compare-cell"><span class="dash">&mdash;</span></div>
+        <div class="compare-cell"><span class="check">&check;</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell">Unlimited updates</div>
+        <div class="compare-cell"><span class="dash">&mdash;</span></div>
+        <div class="compare-cell"><span class="check">&check;</span></div>
       </div>
     </div>
   </section>

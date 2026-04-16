@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Eterno Web Studio — Custom Websites for Tattoo Artists</title>
-  <meta name="description" content="Free tattoo artist website builder. Enter your Instagram, pick a theme, get a custom 5-page site in minutes. No coding, no contracts. 17 artists already live."/>
+  <title>Eterno Web Studio — Websites, Booking & Portfolio for Tattoo Artists</title>
+  <meta name="description" content="Your website, portfolio, and booking system — live in minutes. Enter your Instagram, pick a theme, and go. Free forever. 17 artists already running their studios on Eterno."/>
   <link rel="canonical" href="https://eternowebstudio.com"/>
   <link rel="icon" href="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/eterno-logo-square.png" type="image/png"/>
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Eterno Web Studio — Free Tattoo Artist Website Builder"/>
-  <meta property="og:description" content="Enter your Instagram, pick a theme, get a custom tattoo portfolio website in minutes. Free forever, no coding required."/>
+  <meta property="og:title" content="Eterno Web Studio — Website, Portfolio & Booking for Tattoo Artists"/>
+  <meta property="og:description" content="The complete studio setup for tattoo artists. Website, portfolio, booking, and scheduling — live in minutes. Free forever, no coding required."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://eternowebstudio.com"/>
   <meta property="og:site_name" content="Eterno Web Studio"/>
@@ -18,8 +18,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Eterno Web Studio — Free Tattoo Artist Website Builder"/>
-  <meta name="twitter:description" content="Enter your Instagram, pick a theme, get a custom tattoo portfolio website in minutes. Free forever, no coding required."/>
+  <meta name="twitter:title" content="Eterno Web Studio — Website, Portfolio & Booking for Tattoo Artists"/>
+  <meta name="twitter:description" content="The complete studio setup for tattoo artists. Website, portfolio, booking, and scheduling — live in minutes. Free forever, no coding required."/>
   <meta name="twitter:image" content="https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/main/img/eterno-og.png"/>
 
   <!-- Structured Data -->
@@ -29,7 +29,7 @@
     "@type": "Organization",
     "name": "Eterno Web Studio",
     "url": "https://eternowebstudio.com",
-    "description": "Custom websites for tattoo artists, built from Instagram in minutes.",
+    "description": "Websites, portfolios, and booking for tattoo artists — built from Instagram in minutes.",
     "address": { "@type": "PostalAddress", "addressLocality": "Houston", "addressRegion": "TX", "addressCountry": "US" }
   }
   </script>
@@ -520,6 +520,69 @@
       line-height: 1.7;
     }
 
+    /* ─── FEATURES (Everything You Need) ────────── */
+    .features {
+      border-top: 1px solid var(--border);
+      background:
+        radial-gradient(ellipse 60% 60% at 80% 20%, rgba(201,160,48,0.04) 0%, transparent 70%),
+        var(--ink);
+    }
+    .features-header {
+      padding: 100px 48px 0;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border);
+      margin-top: 56px;
+    }
+    .feature {
+      padding: 52px 40px;
+      border-right: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .feature:last-child { border-right: none; }
+    .feature:hover { background: rgba(201,160,48,0.04); }
+    .feature-icon {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.6rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 22px;
+      letter-spacing: -0.02em;
+    }
+    .feature-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .feature-label::before {
+      content: '';
+      display: block;
+      width: 18px; height: 1px;
+      background: var(--gold);
+    }
+    .feature h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--paper);
+      margin-bottom: 12px;
+    }
+    .feature p {
+      font-size: 0.85rem;
+      color: var(--dim);
+      line-height: 1.7;
+    }
+
     /* ─── PRICING ────────────────────────────────── */
     .pricing {
       border-top: 1px solid var(--border);
@@ -873,6 +936,11 @@
       .process-steps { grid-template-columns: 1fr; }
       .process-step { border-right: none; border-bottom: 1px solid var(--border); }
       .process-step:last-child { border-bottom: none; }
+      .features-header { padding: 80px 32px 0; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .feature { border-bottom: 1px solid var(--border); }
+      .feature:nth-child(2) { border-right: none; }
+      .feature:nth-child(3), .feature:nth-child(4) { border-bottom: none; }
       .gallery-preview { padding: 80px 32px; }
       .gallery-grid { grid-template-columns: repeat(3, 1fr); }
       .compare-row { grid-template-columns: 1fr 100px 100px; }
@@ -911,6 +979,10 @@
       .manifesto { padding: 64px 24px; }
       .process-header { padding: 64px 24px 0; }
       .process-step { padding: 40px 24px; }
+      .features-header { padding: 64px 24px 0; }
+      .features-grid { grid-template-columns: 1fr; }
+      .feature { padding: 40px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+      .feature:last-child { border-bottom: none; }
       .gallery-preview { padding: 64px 24px; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
       .compare-row { grid-template-columns: 1fr 80px 80px; }
@@ -975,7 +1047,7 @@
     <div class="hero-right">
       <p class="hero-sub">
         Enter your Instagram. Pick a style.<br>
-        Your custom website <strong>builds itself in minutes.</strong>
+        Your <strong>website, portfolio, and booking system</strong> go live in minutes.
       </p>
       <div class="hero-cta-wrap">
         <a href="https://dashboard.eternowebstudio.com/start" class="btn-hero">
@@ -986,8 +1058,8 @@
       </div>
       <p class="hero-proof">
         <span>17</span> artists already live &middot;
-        <span>6</span> countries &middot;
-        <span>2-4 min</span> build time
+        <span>Site + booking + portfolio</span> &middot;
+        <span>Free</span> forever
       </p>
     </div>
   </section>
@@ -1026,9 +1098,10 @@
     <div>
       <blockquote class="reveal reveal-d1">
         "We are not a generic website builder.<br>
-        We are not a drag-and-drop page editor.<br>
+        We are not a booking app with a profile page attached.<br>
         We are <span class="accent">a craft studio</span> &mdash;<br>
-        built by artists, for artists."
+        building your complete online presence<br>
+        the way tattoo artists actually work."
       </blockquote>
       <div class="manifesto-footer reveal reveal-d2">
         <p class="manifesto-attr">&mdash; Eterno Web Studio &nbsp;&middot;&nbsp; Houston, TX</p>
@@ -1064,8 +1137,47 @@
       <div class="process-step reveal reveal-d2">
         <div class="step-number">03</div>
         <p class="step-label">Go Live</p>
-        <h3>Your Site Builds Itself</h3>
-        <p>In 2-4 minutes you have a live 5-page site: Home, About, Gallery, Booking, Contact.</p>
+        <h3>Everything Goes Live</h3>
+        <p>Website, portfolio, booking form, and scheduling — all live in minutes. One link. One login. Your whole studio, online.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES / EVERYTHING YOU NEED -->
+  <section class="features">
+    <div class="features-header">
+      <div class="section-header">
+        <div>
+          <p class="section-tag reveal">Everything You Need</p>
+          <h2 class="section-h2 reveal reveal-d1">One Studio. Every Tool.</h2>
+        </div>
+        <a href="/how-it-works" class="section-link reveal">How it works &rarr;</a>
+      </div>
+    </div>
+    <div class="features-grid">
+      <div class="feature reveal">
+        <div class="feature-icon">I</div>
+        <p class="feature-label">Website</p>
+        <h3>A Site That Looks Like Your Work</h3>
+        <p>Custom 5-page site. Editorial design. Built from your Instagram — not a template.</p>
+      </div>
+      <div class="feature reveal reveal-d1">
+        <div class="feature-icon">II</div>
+        <p class="feature-label">Portfolio</p>
+        <h3>Instagram, Properly Displayed</h3>
+        <p>Auto-synced gallery. Masonry or grid. Your flash, healed pieces, and sessions — archived the way they deserve.</p>
+      </div>
+      <div class="feature reveal reveal-d2">
+        <div class="feature-icon">III</div>
+        <p class="feature-label">Booking</p>
+        <h3>Inquiries Without the Instagram DMs</h3>
+        <p>Custom booking forms that match your process. References, placement, budget, availability — all in one clean thread.</p>
+      </div>
+      <div class="feature reveal reveal-d3">
+        <div class="feature-icon">IV</div>
+        <p class="feature-label">Scheduling</p>
+        <h3>Your Calendar, Under Control</h3>
+        <p>Set your hours, block off time, confirm sessions. Clients see what's open. You stay booked without the back-and-forth.</p>
       </div>
     </div>
   </section>

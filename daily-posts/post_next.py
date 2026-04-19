@@ -13,55 +13,55 @@ BASE_URL = "https://raw.githubusercontent.com/BayouWebStudio/eternowebstudio/mai
 POSTS = [
     {
         "file": "eterno-01-A-marker-manifesto.png",
-        "caption": "YR ART, ONLINE, FOREVER. ⚡\n\nWebsite + portfolio + booking — all in one. No credit card. No catch.\n\n👉 eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
+        "caption": "YR ART, ONLINE, FOREVER. ⚡\n\nWebsite + portfolio + booking — all in one. No credit card. No catch.\n\n🔗 Claim yours — eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
     },
     {
         "file": "eterno-04-A-crossed-out-phone.png",
-        "caption": "243 unread DMs. Sound familiar? 😤\n\nStop running your shop out of the DMs. Get a real booking form.\n\n👉 eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
+        "caption": "243 unread DMs. Sound familiar? 😤\n\nStop running your shop out of the DMs. Get a real booking form.\n\n💬 Less DMs. More ink — eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
     },
     {
         "file": "eterno-05-A-checklist.png",
-        "caption": "A website that looks like your work. 🖤\n\n5 pages. Custom layout. Built from your IG. Not a template. Not Squarespace.\n\n👉 eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
+        "caption": "A website that looks like your work. 🖤\n\n5 pages. Custom layout. Built from your IG. Not a template. Not Squarespace.\n\n🎨 See how it works — eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
     },
     {
         "file": "eterno-02-B-pinned-polaroids.png",
-        "caption": "REAL SITES. REAL TATTOOERS. 🔥\n\nFrank Vortex. Golden Soul. Venus Balam. + 14 more.\n\n👉 eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
+        "caption": "REAL SITES. REAL TATTOOERS. 🔥\n\nFrank Vortex. Golden Soul. Venus Balam. + 14 more.\n\n👀 Browse the roster — eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
     },
     {
         "file": "eterno-06-A-scattered-polaroids.png",
-        "caption": "Your IG, but it doesn't disappear. 📸\n\nEvery piece of flash, every healed photo — archived the way they deserve. Auto-synced from your IG.\n\n👉 eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
+        "caption": "Your IG, but it doesn't disappear. 📸\n\nEvery piece of flash, every healed photo — archived the way they deserve. Auto-synced from your IG.\n\n📁 Archive your work — eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
     },
     {
         "file": "eterno-04-B-not-a-receptionist.png",
-        "caption": "You are a tattooer. Not a receptionist. 💀\n\nOne form. Done. No back-and-forth. Style, placement, budget, refs — everything you need in one go.\n\n👉 eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
+        "caption": "You are a tattooer. Not a receptionist. 💀\n\nOne form. Done. No back-and-forth. Style, placement, budget, refs — everything you need in one go.\n\n🛑 Stop answering the same questions — eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
     },
     {
         "file": "eterno-07-A-form-checklist.png",
-        "caption": "Inquiries, without the chaos. ✅\n\nWhat style? Where? How big? Budget? Refs? Availability? — All in one form. No more chasing DMs.\n\n👉 eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
+        "caption": "Inquiries, without the chaos. ✅\n\nWhat style? Where? How big? Budget? Refs? Availability? — All in one form. No more chasing DMs.\n\n📝 Get the form — eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
     },
     {
         "file": "eterno-09-B-stat-cards.png",
-        "caption": "15 DMs → 1. 2 days → 10 min. Always missing info → Never. 📊\n\nStop the friction. Start the booking.\n\n👉 eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
+        "caption": "15 DMs → 1. 2 days → 10 min. Always missing info → Never. 📊\n\nStop the friction. Start the booking.\n\n⚡ Cut the chaos — eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
     },
     {
         "file": "eterno-08-A-hand-drawn-calendar.png",
-        "caption": "Your calendar. Your rules. 🗓️\n\nOpen. Booked. Off. Set it once and forget it.\n\n👉 eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
+        "caption": "Your calendar. Your rules. 🗓️\n\nOpen. Booked. Off. Set it once and forget it.\n\n📌 Lock in your schedule — eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
     },
     {
         "file": "eterno-06-B-flash-healed-sessions.png",
-        "caption": "Flash. Healed pieces. Every session. 🔄\n\nArchived the way they deserve — not buried in an IG feed. Auto-synced from your IG.\n\n👉 eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
+        "caption": "Flash. Healed pieces. Every session. 🔄\n\nArchived the way they deserve — not buried in an IG feed. Auto-synced from your IG.\n\n📸 Build your archive — eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
     },
     {
         "file": "eterno-08-B-block-confirm-repeat.png",
-        "caption": "BLOCK. CONFIRM. REPEAT. 📅\n\nMaya · Fine Line · Forearm — BOOKED. That's how clean it should be.\n\n👉 eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
+        "caption": "BLOCK. CONFIRM. REPEAT. 📅\n\nMaya · Fine Line · Forearm — BOOKED. That's how clean it should be.\n\n✅ Start booking cleaner — eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
     },
     {
         "file": "eterno-03-A-big-numeral.png",
-        "caption": "17 tattooers on the roster. 🔥\n\nReal shops. Real clients. Real bookings. You're next.\n\n👉 eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
+        "caption": "17 tattooers on the roster. 🔥\n\nReal shops. Real clients. Real bookings. You're next.\n\n🤝 Join the roster — eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
     },
     {
         "file": "eterno-10-A-0-00-receipt.png",
-        "caption": "Alright, here's the deal. 💰\n\nWebsite — free. Portfolio — free. Booking — free. Scheduling — free. 5 pages — free. Total: $0.00. No CC. No contracts.\n\n👉 eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
+        "caption": "Alright, here's the deal. 💰\n\nWebsite — free. Portfolio — free. Booking — free. Scheduling — free. 5 pages — free. Total: $0.00. No CC. No contracts.\n\n🆓 Build yours free — eternowebstudio.com\n\n#eternowebstudio #tattooartist #webdesign #houston #smallbusiness"
     },
 ]
 

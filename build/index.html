@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Build your site — Eterno Web Studio</title>
+  <meta name="robots" content="noindex"/>
+  <!-- Printed convention QR points at /build?source=convention.
+       JS forwards the real query string; meta refresh is the no-JS fallback. -->
+  <meta http-equiv="refresh" content="0;url=https://dashboard.eternowebstudio.com/start?source=convention"/>
+  <style>
+    body{margin:0;display:flex;align-items:center;justify-content:center;min-height:100vh;background:#0a0805;color:#f5f0e8;font:16px 'Georgia',serif}
+    a{color:#c9a030}
+  </style>
+</head>
+<body>
+  <p>Taking you to the builder… <a href="https://dashboard.eternowebstudio.com/start?source=convention">tap here</a> if nothing happens.</p>
+  <script>
+    location.replace("https://dashboard.eternowebstudio.com/start" + (location.search || "?source=convention"));
+  </script>
+</body>
+</html>

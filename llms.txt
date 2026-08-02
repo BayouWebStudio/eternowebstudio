@@ -1,6 +1,6 @@
 # Eterno Web Studio
 
-> Free tattoo artist website builder. Enter your Instagram, pick a theme, get a custom 5-page website in minutes. No coding, no contracts. 17 artists already live.
+> Free tattoo artist website builder. Enter your Instagram, pick a theme, get a custom 5-page website in minutes. No coding, no contracts. 30+ artists already live.
 
 ## What Eterno Does
 
@@ -8,7 +8,7 @@ Eterno Web Studio builds custom websites for tattoo artists from their Instagram
 
 ## Pricing
 
-- Free ($0/forever): Custom 5-page website, free subdomain, SEO, booking forms, visual editor, Instagram gallery sync
+- Free ($0/forever): Custom 5-page website, free eternowebstudio.com address, SEO, booking forms, visual editor, Instagram gallery sync
 - Pro ($25/month): Everything in Free plus custom domain, analytics dashboard, AI booking agent, priority support, unlimited updates
 
 ## Pages
@@ -16,14 +16,14 @@ Eterno Web Studio builds custom websites for tattoo artists from their Instagram
 - [Home](https://eternowebstudio.com/): Main landing page with product overview, client gallery, and pricing
 - [About](https://eternowebstudio.com/about): Founding story, philosophy, and values
 - [How It Works](https://eternowebstudio.com/how-it-works): 4-step process — enter Instagram, pick theme, choose layout, go live
-- [Portfolio](https://eternowebstudio.com/portfolio): 17 live client websites with screenshots
+- [Portfolio](https://eternowebstudio.com/portfolio): live client websites with screenshots
 - [Pricing](https://eternowebstudio.com/pricing): Free and Pro plan details with FAQ
 
 ## Key Facts
 
 - Location: Houston, TX
 - Founded: 2024
-- Active clients: 17 tattoo artists across 6 countries
+- Active clients: 30+ tattoo artists (17 showcased in the portfolio)
 - Themes: Geometric, Neo Traditional, Blackwork, Realism, New School, Watercolor
 - Layouts: Monolith, Split, Showcase, Raw
 - Build time: 2-4 minutes

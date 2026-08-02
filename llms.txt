@@ -33,3 +33,9 @@ Eterno Web Studio builds custom websites for tattoo artists from their Instagram
 ## Tech Stack
 
 Static HTML sites on GitHub Pages, React dashboard on Vercel, Convex serverless backend, Clerk auth, Stripe payments.
+
+## Related Sites (same studio)
+
+- [wesche.com](https://wesche.com/): Raúl Wesche — geometric tattoo artist, Houston TX (founder of Eterno)
+- [OMF Geometry](https://omfgeometry.com/): Directory of 130 geometric tattoo artists + print magazine
+- [Vesica Studio](https://vesica.studio/): Sacred geometry drawing app for iPhone/iPad
